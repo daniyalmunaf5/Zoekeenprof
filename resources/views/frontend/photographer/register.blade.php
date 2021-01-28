@@ -12,6 +12,8 @@
                         <form method="POST" action="{{ route('frontend.photographer.store') }}">
                             @csrf
 
+                            <input type="hidden" id="user" name="user" value="photographer">
+                            
 
                             <input id="email" placeholder="Email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             @error('email')
