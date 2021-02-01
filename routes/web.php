@@ -26,6 +26,8 @@ Route::get('/AboutUs', 'App\Http\Controllers\frontend\HomeController@aboutus')->
 Route::get('/registration', 'App\Http\Controllers\frontend\HomeController@registration')->name('registration');
 Route::get('/Register', 'App\Http\Controllers\frontend\HomeController@chooseregister')->name('choose-register');
 Route::get('/Login', 'App\Http\Controllers\frontend\HomeController@login')->name('custom-login');
+Route::get('/search-photographer', 'App\Http\Controllers\frontend\HomeController@searchphotographer')->name('search-photographer');
+
 
 Route::get('/CustomerRegister', 'App\Http\Controllers\frontend\CustomerController@register')->name('customer-register');
 

@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="input-group-append">
-                        <a href="search-photographer.html"><button class="btn btn-primary search_button" type="button" style="border-radius: 20px;">Search</button></a>
+                        <a href="{{route('search-photographer')}}"><button class="btn btn-primary search_button" type="button" style="border-radius: 20px;">Search</button></a>
                       </div>
                     
                 </div>

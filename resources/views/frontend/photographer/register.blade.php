@@ -9,7 +9,7 @@
                         <br><br><br><br><br>
                         <h1 class="text-center white" >Register</h1>
                         <br><br>
-                        <form method="POST" action="{{ route('frontend.photographer.store') }}">
+                        <form method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <input type="hidden" id="user" name="user" value="photographer">
@@ -38,6 +38,13 @@
 
                             <input id="address" placeholder="Address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
                             @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                            <input id="company_name" placeholder="Company Name" type="text" class="form-control @error('company_name') is-invalid @enderror" name="company_name" value="{{ old('company_name') }}" required autocomplete="company_name" autofocus>
+                            @error('company_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -92,12 +99,28 @@
                                 </span>
                             @enderror
 
+                            <input id="experience" placeholder="experience" type="number" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ old('experience') }}" required autocomplete="experience" autofocus>
+                            @error('experience')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
                             <input id="type_of_shoot" placeholder="Type Of Shoot" type="text" class="form-control @error('type_of_shoot') is-invalid @enderror" name="type_of_shoot" value="{{ old('phone_number') }}" required autocomplete="type_of_shoot" autofocus>
                             @error('type_of_shoot')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            
+                            <textarea id="description" rows="4" cols="50" placeholder="description" type="text" class="form-control textarea @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
+                            @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                            
                             
                             <button type="submit" class="register-button">
                                 {{ __('Register') }}

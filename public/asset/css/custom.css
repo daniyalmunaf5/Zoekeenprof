@@ -239,6 +239,17 @@ body {
     box-sizing: border-box;
   }
 
+  .textarea{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    box-sizing: border-box;
+  }
+
+
   input[type=email], select {
     width: 100%;
     padding: 12px 20px;
@@ -369,7 +380,7 @@ body {
     .hero-image-3 {
       background-image: url("../images/background-3.jpg");
       background-color: #cccccc;
-      height: 1100px;
+      height: 1400px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;

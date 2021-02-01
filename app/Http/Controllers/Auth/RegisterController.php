@@ -111,19 +111,22 @@ class RegisterController extends Controller
             $photographer->father_name = request('father_name');
             $photographer->password = Hash::make(request('password'));
             $photographer->phone_number = request('phone_number');
+            $photographer->company_name = request('company_name');
             $photographer->address = request('address');
             $photographer->country = request('country');
             $photographer->city = request('city');
             $photographer->province = request('province');
             $photographer->postal_code = request('postal_code');
             $photographer->type_of_shoot = request('type_of_shoot');
+            $photographer->description = request('description');
+            $photographer->experience = request('experience');
             $photographer->save();
     
             $role = Role::select('id')->where('name', 'photographer')->first();
     
             $photographer->roles()->attach($role);
     
-            return $user;
+            return $photographer;
             }
 
     }
