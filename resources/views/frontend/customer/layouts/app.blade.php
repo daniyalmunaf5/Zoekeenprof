@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="asset/css/custom.css"/>
 <link rel="stylesheet" href="asset/css/theme2.css"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
     <body>  
 
@@ -32,7 +31,7 @@
                     <a href="{{ route('registration')}}" style="color: white;">Register</a>
                     @endif
                     @guest
-                                @if (Route::has('login'))
+                    @if (Route::has('login'))
                     <a href="{{ route('custom-login')}}" style="color: white;">Login</a>
                     @endif
                     @else
@@ -52,10 +51,7 @@
             </div>
             @yield('content')
 
-            <script type="text/javascript" src="asset/js/caleandar.js"></script>
-    <script type="text/javascript" src="asset/js/demo.js"></script>
-    <script type="text/javascript" src="asset/js/custom.js"></script>
-    
+                
 
 </html>
           

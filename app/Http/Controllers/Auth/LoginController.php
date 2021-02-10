@@ -50,10 +50,11 @@ class LoginController extends Controller
     {
         if(Auth::user()->hasRole('admin')){
             $this->redirectTo = route('backend.users.index');
+            // dd($country);
             return $this->redirectTo;
         }
 
-        $this->redirectTo = route('frontend.home');
+        $this->redirectTo = route('frontend.home'); 
         return $this->redirectTo;
 
     }

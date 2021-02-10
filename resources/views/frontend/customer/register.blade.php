@@ -37,7 +37,14 @@
                                 </span>
                             @enderror
 
-                            <input id="country" placeholder="Country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" required autocomplete="country" autofocus>
+                            <select class="form-control text-capitalize select" name="country" required id="country">
+                                <option value="">Select Country</option>   
+                                @foreach ($countries as $country) 
+                                <option value="{{$country->name}}">
+                                {{$country->name}}
+                                </option>
+                                @endforeach
+                            </select>
                             @error('country')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

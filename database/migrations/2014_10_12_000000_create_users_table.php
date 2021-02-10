@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->bigInteger('phone_number')->nullable();
             $table->text('address')->nullable();
+            $table->text('profilepic')->nullable();
             $table->string('company_name')->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();

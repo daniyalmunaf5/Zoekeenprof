@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Country;
+use App\Models\States;
+use App\Models\City;
+use DB;
+USE Input;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -20,7 +25,9 @@ class CustomerController extends Controller
 
     public function register()
     {
-        return view('frontend.customer.register');
+        $data['countries'] = Country::get(["name","id"]);
+        return view('frontend.customer.register',$data);
+        // return view('frontend.customer.register');
     }
 
 

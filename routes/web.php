@@ -26,8 +26,13 @@ Route::get('/AboutUs', 'App\Http\Controllers\frontend\HomeController@aboutus')->
 Route::get('/registration', 'App\Http\Controllers\frontend\HomeController@registration')->name('registration');
 Route::get('/Register', 'App\Http\Controllers\frontend\HomeController@chooseregister')->name('choose-register');
 Route::get('/Login', 'App\Http\Controllers\frontend\HomeController@login')->name('custom-login');
-Route::get('/search-photographer', 'App\Http\Controllers\frontend\HomeController@searchphotographer')->name('search-photographer');
+Route::get('/search-photographer', 'App\Http\Controllers\frontend\HomeController@searchphotographer')->name('search-photographer')->middleware('auth');
+Route::post('/filter-photographer', 'App\Http\Controllers\frontend\HomeController@filterphotographer')->name('filter-photographer');
 
+Route::get('/get-states','App\Http\Controllers\frontend\PhotographerController@getStates')->name('get-states');
+Route::get('/get-cities','App\Http\Controllers\frontend\PhotographerController@getCities')->name('get-cities');
+// Route::post('get-states-by-country','CountryStateCityController@getState');
+// Route::post('get-cities-by-state','CountryStateCityController@getCity');
 
 Route::get('/CustomerRegister', 'App\Http\Controllers\frontend\CustomerController@register')->name('customer-register');
 

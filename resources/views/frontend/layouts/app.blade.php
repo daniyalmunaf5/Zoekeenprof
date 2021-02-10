@@ -14,6 +14,58 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script type="text/javascript" src="asset/js/jquery-2.1.4.min.js"></script>
+
+    <script type="text/javascript">
+
+
+	function getCities(id,city='')
+	{
+		var send = 'states=' + id;
+		if(city!='')
+		{
+			var send = 'states=' + id + '&city=' + city;
+		}
+		$.ajax({
+			type: "GET",
+			url: "{{ url('get-cities') }}",
+			data: send,
+			success: function(response){
+				$('#city').html(response);
+			}
+		});
+	}
+
+function getstates(id ,states = '')
+{	
+var send = 'country=' + id + '&states='+states;
+$.ajax({
+        type: "GET",
+        url: "{{ url('get-states') }}",
+        data: send,
+        success: function(response){
+        $('#states').html(response);
+        },
+        error: function(errormessage) {
+        //you would not show the real error to the user - this is just to see if everything is working
+        
+        }
+});
+}
+
+
+
+$("body").on("change",,function(){
+    var country = $(this).val();
+    getstates(country);
+});
+
+$("body").on("change","#states",function(){
+    var states = $(this).val();
+    getCities(states);
+});
+
+</script>
 </head>
     <body>  
 
@@ -30,11 +82,12 @@
                 @endcan
 
                 <a href="{{ route('about-us')}}">About Us</a>
+
+                @guest
                 @if (Route::has('register'))
                 <a href="{{ route('registration')}}">Register</a>
                 @endif
-                @guest
-                            @if (Route::has('login'))
+                @if (Route::has('login'))
                 <a href="{{ route('custom-login')}}">Login</a>
                 @endif
                 @else
@@ -93,6 +146,9 @@
     <script type="text/javascript" src="asset/js/caleandar.js"></script>
     <script type="text/javascript" src="asset/js/demo.js"></script>
     <script type="text/javascript" src="asset/js/custom.js"></script>
+
+
+
 
     
 </html>

@@ -27,18 +27,23 @@ class UsersTableSeeder extends Seeder
         $admin = User::create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
+            'country' => 'Pakistan',
             'password' => Hash::make('password')
         ]);
 
         $photographer = User::create([
             'name' => 'Photographer',
+            'company_name' => 'Photographer',
             'email' => 'photographer@gmail.com',
+            'country' => 'Pakistan',
+            'type_of_shoot' => 'Weddings',
             'password' => Hash::make('password')
         ]);
 
         $user = User::create([
             'name' => 'User',
             'email' => 'user@gmail.com',
+            'country' => 'Pakistan',
             'password' => Hash::make('password')
         ]);
 

@@ -5,7 +5,12 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Country;
+use App\Models\States;
+use App\Models\City;
 use App\Models\Role;
+use DB;
+USE Input;
 use Illuminate\Support\Facades\Hash;
 
 class PhotographerController extends Controller
@@ -18,9 +23,28 @@ class PhotographerController extends Controller
 
     public function register()
     {
-        return view('frontend.photographer.register');
+        $data['countries'] = Country::get(["name","id"]);
+        return view('frontend.photographer.register',$data);
+
+     
+        // return view('frontend.photographer.register',compact('countries','cities','states'));
     }
     
+
+    public function getState(Request $request)
+    {
+        $data['states'] = State::where("country_id",$request->country_id)
+                    ->get(["name","id"]);
+        return response()->json($data);
+    }
+    public function getCity(Request $request)
+    {
+        $data['cities'] = City::where("state_id",$request->state_id)
+                    ->get(["name","id"]);
+        return response()->json($data);
+    }
+    
+
     public function index()
     {
         //

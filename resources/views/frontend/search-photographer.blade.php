@@ -13,12 +13,57 @@
             <div class="row ">
                 <div  style="box-shadow: 1px 4px grey; border-left: 1px solid grey;  " class="col-lg-5 col-md-5 mt-5">
                     <br>
+                    <form method="POST" action="{{route('filter-photographer')}}">
+                            @csrf
                     <h3 class="dark-blue" style="font-size: 27px;">Vind een Top 10 <span class="sky-blue">Fotograaf</span> in <span class="sky-blue">Nijmegen</span></h3>
                     <h3 class="dark-blue mt-3" style="font-size: 15px;">lK ZOEK EEN FOTOGRAAF VOOR</h3>
-                    <input style=" height: 40px;" type="text" placeholder="bijv. bruiloft">
+                    <select class="form-control text-capitalize select" name="type_of_shoot" required id="type_of_shoot">
+                        <option value="">Select Type Of Shoot</option>   
+                        <option value="Landscape">Landscape</option>   
+                        <option value="Wildlife">Wildlife</option>   
+                        <option value="Macro">Macro</option>   
+                        <option value="Underwater">Underwater</option>   
+                        <option value="Astrophotography">Astrophotography</option>   
+                        <option value="Aerial Photography">Aerial Photography</option>   
+                        <option value="Scientific">Scientific</option>   
+                        <option value="Portraits">Portraits</option>   
+                        <option value="Weddings">Weddings</option>   
+                        <option value="Documentary">Documentary</option>   
+                        <option value="Sports">Sports</option>   
+                        <option value="Commercial">Commercial</option>   
+                        <option value="Street Photography">Street Photography</option>   
+                        <option value="Event Photography">Event Photography</option>   
+                        <option value="Travel">Travel</option>   
+                        <option value="Pet Photography">Pet Photography</option>   
+                        <option value="Product Photography">Product Photography</option>   
+                        <option value="Food">Food</option>   
+                        <option value="Still Life Photography">Still Life Photography</option>
+                        <option value="Architecture">Architecture</option>   
+                        <option value="Other Types of Photography">Other Types of Photography</option>   
+                    </select>
+                    @error('type_of_shoot')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     <h3 class="dark-blue mt-2" style="font-size: 15px;">PLAATS</h3>
-                    <input style=" height: 40px;margin-top: 0px;font-family: FontAwesome; border-radius: 40px;" placeholder='&#xf041 Nijmegen' type="text">
-                    <input type="submit" value="Search">
+                    <select class="form-control text-capitalize select" name="country" >
+                        <option value="">Select Country</option>   
+                        @foreach ($countries as $country) 
+                        <option value="{{$country->name}}">
+                        {{$country->name}}
+                        </option>
+                        @endforeach
+                    </select>
+                    @error('country')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <input type="submit" value="Search" class="register-button">
+                    <br><br>
+                </form>
+
                 </div>
                 <div class="col-lg-2 col-md-1"></div>
                 <div class="justify-items-at-768 col-lg-5 col-md-6 ">
@@ -86,14 +131,14 @@
 
                     <div class="row">
                         <div class="img text-center col-lg-3 col-md-5">
-                            <a href="profile.html"><img class="img-width-at-992" style="width: 160px;" src="asset/images/avatars/avatar-female-round-2.jpg" alt=""></a>
+                            <a href="profile.html"><img class="img-width-at-992" style="width: 180px;height: 250px;" src="{{asset('../storage/'.$user->profilepic)}}" alt=""></a>
                             <br><br>
                         </div>
                         <div class=" justify-items-at-768 justify-text-at-992 col-lg-8 col-md-7">
                             <a href="profile.html"><h3 class="black">{{$user->company_name}}</h3></a>
                             <h3 class="black" style="font-size: 14px; font-weight: lighter;">{{$user->description}}</h3>
                             <div class="" style=" line-height: 32px;">
-                                    <h3 class="black" style="font-size: 14px; font-weight: lighter;"><i style="color: #0103a1;" class="m-1 fa fa-map-marker"></i>{{$user->address}}</h3>
+                                    <h3 class="black" style="font-size: 14px; font-weight: lighter;"><i style="color: #0103a1;" class="m-1 fa fa-map-marker"></i>{{$user->address}}, {{$user->country}}</h3>
                                     <h3 class="black" style="font-size: 14px; font-weight: lighter;"><i style="color: #0103a1;" class="m-1 fa fa-star"></i>0 beoordelingen</h3>
                                     <h3 class="black" style="font-size: 14px; font-weight: lighter;"><i style="color: #0103a1;" class="m-1 fa fa-battery-half"></i>{{$user->experience}} Years of Experience</h3>
                                     <br>
@@ -119,7 +164,7 @@
                     @endforeach
 
                     
-                    <br><br><hr><br><br>
+                    <br><br><br><br>
 
                     <!-- photographer -->
                     <!-- <div class="row">
