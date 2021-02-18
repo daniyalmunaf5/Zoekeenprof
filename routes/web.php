@@ -28,7 +28,10 @@ Route::get('/Register', 'App\Http\Controllers\frontend\HomeController@chooseregi
 Route::get('/Login', 'App\Http\Controllers\frontend\HomeController@login')->name('custom-login');
 Route::get('/search-photographer', 'App\Http\Controllers\frontend\HomeController@searchphotographer')->name('search-photographer')->middleware('auth');
 Route::post('/filter-photographer', 'App\Http\Controllers\frontend\HomeController@filterphotographer')->name('filter-photographer');
+Route::get('/profile{user}/profile', 'App\Http\Controllers\frontend\HomeController@profile')->name('profile');
 
+
+Route::get('frontend/photographer/{user}/edit', 'App\Http\Controllers\frontend\PhotographerController@edit')->name('frontend.photographer.edit');
 Route::get('/get-states','App\Http\Controllers\frontend\PhotographerController@getStates')->name('get-states');
 Route::get('/get-cities','App\Http\Controllers\frontend\PhotographerController@getCities')->name('get-cities');
 // Route::post('get-states-by-country','CountryStateCityController@getState');
@@ -46,9 +49,16 @@ Route::namespace('App\Http\Controllers\frontend')->prefix('frontend')->name('fro
 });
 
 Route::namespace('App\Http\Controllers\frontend')->prefix('frontend')->name('frontend.')->group(function(){
-    Route::resource('/photographer', 'PhotographerController', ['except' => ['show', 'create']]);
+    Route::resource('/photographer', 'PhotographerController', ['except' => [  'edit','create']]);
 });
 
 Route::namespace('App\Http\Controllers\backend')->prefix('backend')->name('backend.')->middleware('can:manage-users')->group(function(){
     Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'store']]);
 });
+
+Route::namespace('App\Http\Controllers\backend')->prefix('backend')->name('backend.')->group(function(){
+    Route::resource('/photographer', 'PhotographerController', ['except' => [ 'update','index' ,'create', 'store']]);
+});
+Route::get('/backend{user}/profile', 'App\Http\Controllers\backend\PhotographerController@index')->name('backend.photographer.index');
+Route::get('/backend{user}/edit', 'App\Http\Controllers\backend\PhotographerController@edit')->name('backend.photographer.edit');
+Route::PUT('backend/{user}', 'App\Http\Controllers\backend\PhotographerController@update')->name('backend.photographer.update');

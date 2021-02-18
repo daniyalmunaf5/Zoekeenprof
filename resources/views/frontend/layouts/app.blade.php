@@ -7,9 +7,10 @@
     <link href="asset/images/logo/Capture-black.PNG" type="image/png" rel="icon">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="asset/css/demo.css"/>
-<link rel="stylesheet" href="asset/css/custom.css"/>
-<link rel="stylesheet" href="asset/css/theme2.css"/>
+<link href="{{ asset('asset/css/demo.css') }}" rel="stylesheet">
+<link href="{{ asset('asset/css/custom.css') }}" rel="stylesheet">
+<link href="{{ asset('asset/css/theme2.css') }}" rel="stylesheet">
+<link href="{{ asset('asset/css/bootstrap.min.css') }}" rel="stylesheet">
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,7 +73,7 @@ $("body").on("change","#states",function(){
         <!-- Header -->
         <div id="myTopnav" class="topnav">
             <a class="navbar-brand" href="{{ route('frontend.home')}}">
-                <img src="asset/images/logo/Capture.PNG" alt="logo" style="width: 90px; margin-left: 35px;">
+                <img src="{{ asset('asset/images/logo/Capture.PNG') }}" alt="logo" style="width: 90px; margin-left: 35px;">
             </a>
             <div class="topnav-right">
                 <!-- <a href="#" class="active">Home</a> -->
@@ -80,7 +81,10 @@ $("body").on("change","#states",function(){
                 @can('edit-users')
                 <a href="{{ route('backend.users.index')}}">Dashboard</a>
                 @endcan
-
+                @can('photographer-dashboard')
+                <a href="{{ route('backend.photographer.index',Auth::user()->id)}}">My Profile</a>
+                @endcan
+                
                 <a href="{{ route('about-us')}}">About Us</a>
 
                 @guest
@@ -113,7 +117,7 @@ $("body").on("change","#states",function(){
            <!-- footer -->
            <div class="row footer mt-5">
             <div class="col-lg-9 col-md-9">
-                <img src="asset/images/logo/Capture-black.PNG" alt="logo" style=" margin-top: 15px;margin-left: 20px;width: 190px;">
+                <img src="{{ asset('asset/images/logo/Capture-black.PNG') }}" alt="logo" style=" margin-top: 15px;margin-left: 20px;width: 190px;">
                 <h4>Over ZoeleenProf</h4>
                 <h4>Bedrijf aanmeldon</h4>
                 <h4 class="mt-5">Privacy Statement</h4>
@@ -143,9 +147,9 @@ $("body").on("change","#states",function(){
         </div>
     </body>
 
-    <script type="text/javascript" src="asset/js/caleandar.js"></script>
-    <script type="text/javascript" src="asset/js/demo.js"></script>
-    <script type="text/javascript" src="asset/js/custom.js"></script>
+    <script type="text/javascript" src="{{ asset('asset/js/caleandar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('asset/js/demo.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('asset/js/custom.js') }}"></script>
 
 
 

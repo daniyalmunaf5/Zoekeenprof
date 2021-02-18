@@ -33,6 +33,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasRole('admin');
         });
 
+        Gate::define('photographer-dashboard', function($user){
+            return $user->hasRole('photographer');
+        });
+
         Gate::define('delete-users', function($user){
             return $user->hasRole('admin');
         });

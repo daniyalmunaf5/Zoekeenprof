@@ -131,11 +131,11 @@
 
                     <div class="row">
                         <div class="img text-center col-lg-3 col-md-5">
-                            <a href="profile.html"><img class="img-width-at-992" style="width: 180px;height: 250px;" src="{{asset('../storage/'.$user->profilepic)}}" alt=""></a>
+                            <a href="{{ route('profile',$user->id) }}"><img class="img-width-at-992" style="width: 180px;height: 250px;" src="{{asset('../storage/'.$user->profilepic)}}" alt=""></a>
                             <br><br>
                         </div>
                         <div class=" justify-items-at-768 justify-text-at-992 col-lg-8 col-md-7">
-                            <a href="profile.html"><h3 class="black">{{$user->company_name}}</h3></a>
+                            <a href=""><h3 class="black">{{$user->company_name}}</h3></a>
                             <h3 class="black" style="font-size: 14px; font-weight: lighter;">{{$user->description}}</h3>
                             <div class="" style=" line-height: 32px;">
                                     <h3 class="black" style="font-size: 14px; font-weight: lighter;"><i style="color: #0103a1;" class="m-1 fa fa-map-marker"></i>{{$user->address}}, {{$user->country}}</h3>

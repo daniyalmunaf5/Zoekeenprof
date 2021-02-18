@@ -34,6 +34,12 @@ class HomeController extends Controller
         return view('frontend.login');
     }
 
+    public function profile(User $user)
+    {
+        return view('frontend.profile')->with([
+            'user' => $user]);
+    }
+
     public function registration()
     {
         return view('frontend.registration');
@@ -85,6 +91,8 @@ class HomeController extends Controller
         return view('frontend.search-photographer',$data);
     }
 
+
+    
 
     
 

@@ -53,7 +53,12 @@ class LoginController extends Controller
             // dd($country);
             return $this->redirectTo;
         }
-
+        if(Auth::user()->hasRole('photographer')){
+            $this->redirectTo =  route('backend.photographer.index',Auth::user()->id);
+            // dd($country);
+            return $this->redirectTo;
+        }
+       
         $this->redirectTo = route('frontend.home'); 
         return $this->redirectTo;
 

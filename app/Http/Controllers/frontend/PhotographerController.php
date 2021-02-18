@@ -11,6 +11,8 @@ use App\Models\City;
 use App\Models\Role;
 use DB;
 USE Input;
+use illuminate\Support\Facades\Auth;
+use illuminate\Support\Facades\Task;
 use Illuminate\Support\Facades\Hash;
 
 class PhotographerController extends Controller
@@ -95,9 +97,12 @@ class PhotographerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        // get the shark
+
+        // show the view and pass the shark to it
+        return View::make('frontend.profile',compact('user',$user));
     }
 
     /**
@@ -106,9 +111,10 @@ class PhotographerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('frontend.profile')->with([
+            'user' => $user]);
     }
 
     /**
