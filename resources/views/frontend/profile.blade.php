@@ -52,44 +52,44 @@
                         <br>
                         <div class=row>
                             <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="asset/images/p-1.PNG" alt="">
+                                <img width="100%" src="{{ asset('asset/images/P-1.PNG') }}" alt="">
                                 <br><br>
                             </div>
 
                             <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="asset/images/p-2.PNG" alt="">
+                                <img width="100%" src="{{ asset('asset/images/P-2.PNG') }}" alt="">
                                 <br><br>
                             </div>
 
                             <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="asset/images/p-3.PNG" alt="">
+                                <img width="100%" src="{{ asset('asset/images/P-3.PNG') }}" alt="">
                                 <br><br>
                             </div>
 
                             <div class="col-lg-3 col-md-6 col-sm-12">
-                                <img width="100%" src="asset/images/p-4.PNG" alt="">
+                                <img width="100%" src="{{ asset('asset/images/P-4.PNG') }}" alt="">
                                 <br><br>
                             </div>
                         </div>
                         <br>
                         <div class=row>
                             <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="asset/images/p-5.PNG" alt="">
+                                <img width="100%" src="{{ asset('asset/images/P-5.PNG') }}" alt="">
                                 <br><br>
                             </div>
 
                             <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="asset/images/p-6.PNG" alt="">
+                                <img width="100%" src="{{ asset('asset/images/P-6.PNG') }}" alt="">
                                 <br><br>
                             </div>
 
                             <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="asset/images/p-7.PNG" alt="">
+                                <img width="100%" src="{{ asset('asset/images/P-7.PNG') }}" alt="">
                                 <br><br>
                             </div>
 
                             <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="asset/images/p-8.PNG" alt="">
+                                <img width="100%" src="{{ asset('asset/images/P-8.PNG') }}" alt="">
                                 <br><br>
                             </div>
                         </div>

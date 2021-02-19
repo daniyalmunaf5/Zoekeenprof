@@ -1,6 +1,12 @@
 @extends('frontend.customer.layouts.app')
 
 @section('content')
+
+@if (Auth::check())
+<br><br><br><br>
+    <h1 class="white text-center d-flex justify-content-center">You Are Logged In Already</h1>
+@else
+
             <div class="hero-text container">
                    
                 <div class="row">
@@ -52,6 +58,7 @@
         </div>
         </div>
     </body>
+    @endif 
 @endsection
 
 
