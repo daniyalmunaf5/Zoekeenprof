@@ -31,6 +31,10 @@ Route::post('/filter-photographer', 'App\Http\Controllers\frontend\HomeControlle
 Route::get('/profile{user}/profile', 'App\Http\Controllers\frontend\HomeController@profile')->name('profile');
 
 
+Route::get('/multiuploads', 'App\Http\Controllers\backend\PhotographerController@uploadForm')->name('multiuploads');
+Route::post('/multiuploads', 'App\Http\Controllers\backend\PhotographerController@uploadSubmit')->name('multiuploads');
+
+
 Route::get('frontend/photographer/{user}/edit', 'App\Http\Controllers\frontend\PhotographerController@edit')->name('frontend.photographer.edit');
 Route::get('/get-states','App\Http\Controllers\frontend\PhotographerController@getStates')->name('get-states');
 Route::get('/get-cities','App\Http\Controllers\frontend\PhotographerController@getCities')->name('get-cities');

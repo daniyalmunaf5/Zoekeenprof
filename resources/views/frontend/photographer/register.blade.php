@@ -59,7 +59,7 @@
                         <h1 class="text-center white" >Register</h1>
                         <br><br>
                         
-                        <form enctype="multipart/form-data" method="POST" action="{{ route('register') }}">
+                        <form enctype="multipart/form-data" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <input type="hidden" id="user" name="user" value="photographer">
@@ -188,6 +188,36 @@
                                 <option value="Other Types of Photography">Other Types of Photography</option>   
                             </select>
                             @error('type_of_shoot')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                            <select class="form-control text-capitalize select" name="types_of_shoots[]" id="type_of_shoots" multiple="multiple">
+                                <option value="">Select Types Of Shoots</option>   
+                                <option value="Landscape">Landscape</option>   
+                                <option value="Wildlife">Wildlife</option>   
+                                <option value="Macro">Macro</option>   
+                                <option value="Underwater">Underwater</option>   
+                                <option value="Astrophotography">Astrophotography</option>   
+                                <option value="Aerial Photography">Aerial Photography</option>   
+                                <option value="Scientific">Scientific</option>   
+                                <option value="Portraits">Portraits</option>   
+                                <option value="Weddings">Weddings</option>   
+                                <option value="Documentary">Documentary</option>   
+                                <option value="Sports">Sports</option>   
+                                <option value="Commercial">Commercial</option>   
+                                <option value="Street Photography">Street Photography</option>   
+                                <option value="Event Photography">Event Photography</option>   
+                                <option value="Travel">Travel</option>   
+                                <option value="Pet Photography">Pet Photography</option>   
+                                <option value="Product Photography">Product Photography</option>   
+                                <option value="Food">Food</option>   
+                                <option value="Still Life Photography">Still Life Photography</option>
+                                <option value="Architecture">Architecture</option>   
+                                <option value="Other Types of Photography">Other Types of Photography</option>   
+                            </select>
+                            @error('types_of_shoots')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

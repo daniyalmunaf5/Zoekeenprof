@@ -106,7 +106,7 @@ class RegisterController extends Controller
         elseif($data['user']=='photographer'){
 
             $profilepic = app('App\Http\Controllers\frontend\UploadImageController')->storage_upload(request('profilepic'),'/app/public/PhotographerRegister/');
-            dd($profilepic);
+            // dd($profilepic);
             $photographer = new User();
             $photographer->email = request('email');
             $photographer->name = request('name');
@@ -121,6 +121,16 @@ class RegisterController extends Controller
             $photographer->province = request('province');
             $photographer->postal_code = request('postal_code');
             $photographer->type_of_shoot = request('type_of_shoot');
+            dd(request('types_of_shoots[0]'));
+            $request->types_of_shoots = request('types_of_shoots');
+            foreach ($request->types_of_shoots as $types_of_shoot) 
+                    {
+                        
+                        Types_of_shoot::create([
+                        'user_id' => Auth::user()->id,
+                        'types_of_shoots' => $types_of_shoot
+                        ]);
+                    }
             $photographer->description = request('description');
             $photographer->experience = request('experience');
             $photographer->save();

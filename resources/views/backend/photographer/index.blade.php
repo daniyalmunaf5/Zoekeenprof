@@ -1,13 +1,16 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Profile') }}</div>
+                
                 
                 <div class="container">
+                <br>
+              <h3 class="black bold">Profile</h3>
+
     <div class="main-body">
     
           <!-- Breadcrumb -->
@@ -20,12 +23,18 @@
           </nav> -->
           <!-- /Breadcrumb -->
     <br><br>
+    @if (Session::has('success'))
+   <div class="alert alert-success">{{ Session::get('success') }}</div>
+@endif
+@if (Session::has('danger'))
+   <div class="alert alert-danger">{{ Session::get('danger') }}</div>
+@endif
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img src="{{asset('../storage/'.$user->profilepic)}}" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
                       <h4>{{$user->name}}</h4>
                       <p class="text-secondary mb-1">{{$user->company_name}}</p>
@@ -180,8 +189,11 @@
                         {{$user->description}}
                     </div>
                   </div>
+
+                  
                 </div>
               </div>
+              
               <!-- <div class="row gutters-sm">
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
@@ -240,6 +252,25 @@
               </div> -->
             </div>
           </div>
+          <div class="container">
+          <br>
+              <h3 class="black bold">Photgraphy Portfolio </h3>
+<br>
+              <div class=row>
+                         @foreach($portfolio_image as $portfolio_image)
+
+                            <div class="col-lg-3 col-md-6">
+                                <img width="100%" height="150px" src="{{asset('../storage/app/'.$portfolio_image->filename)}}" alt="">
+                                <br><br>
+                            </div>
+
+                        @endforeach
+                        <div class="col-lg-3 col-md-6">
+                                <a href="{{ route('multiuploads')}}"><img width="100%" height="150px" style="border: 1px solid;border-color: black;" src="{{ asset('asset/images/add_image.PNG') }}" alt=""></a>
+                                <br><br>
+                            </div>
+                        </div>
+                        </div>
         </div>
     </div>
                 

@@ -22,7 +22,7 @@ class UploadImageController extends Controller
         
 
         $folderPath = storage_path('/');  
-        dd($folderPath);
+        // dd($folderPath);
 
         $path = storage_path('/').''.$file_base_path;
         
@@ -47,4 +47,6 @@ class UploadImageController extends Controller
        return $File_final_path;  
 
     }
+
+    
 }

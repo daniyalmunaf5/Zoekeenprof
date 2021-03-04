@@ -51,27 +51,19 @@
                         <h3 class="black bold">Photgraphy Portfolio </h3>
                         <br>
                         <div class=row>
+                         @foreach($portfolio_image as $portfolio_image)
+
                             <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="{{ asset('asset/images/P-1.PNG') }}" alt="">
+                                <img width="100%" height="150px" src="{{asset('../storage/app/'.$portfolio_image->filename)}}" alt="">
                                 <br><br>
                             </div>
 
-                            <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="{{ asset('asset/images/P-2.PNG') }}" alt="">
-                                <br><br>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6">
-                                <img width="100%" src="{{ asset('asset/images/P-3.PNG') }}" alt="">
-                                <br><br>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <img width="100%" src="{{ asset('asset/images/P-4.PNG') }}" alt="">
-                                <br><br>
-                            </div>
+                        @endforeach
+                        
                         </div>
-                        <br>
+
+
+                        <!-- <br>
                         <div class=row>
                             <div class="col-lg-3 col-md-6">
                                 <img width="100%" src="{{ asset('asset/images/P-5.PNG') }}" alt="">
@@ -92,7 +84,7 @@
                                 <img width="100%" src="{{ asset('asset/images/P-8.PNG') }}" alt="">
                                 <br><br>
                             </div>
-                        </div>
+                        </div> -->
 
                         <br><br>
                         <h3 class="black bold">Diensten</h3>

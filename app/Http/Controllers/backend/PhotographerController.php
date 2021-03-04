@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Country;
+use App\Models\Portfolio_image;
+use DB;
 use Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use Session;
 
 class PhotographerController extends Controller
 {
@@ -25,13 +27,16 @@ class PhotographerController extends Controller
     }
 
 
-    public function index(User $user)
+    public function index(User $user , Portfolio_image $portfolio_image)
     {
-        // get the shark
-
-        // show the view and pass the shark to it
+        $portfolio_image = Portfolio_image::where('user_id',$user->id)->get();
+        // dd($portfolio_image[1]->filename);
         return view('backend.photographer.index')->with([
-            'user' => $user]);
+            'user' => $user,
+            'portfolio_image' => $portfolio_image
+            ]);
+        // return view('backend.photographer.index')->with([
+        //     'user' => $user]);
     }
 
     /**
@@ -121,4 +126,51 @@ class PhotographerController extends Controller
     {
         //
     }
-}
+
+    public function uploadForm()
+    {
+    return view('backend.photographer.upload-images');
+    }
+
+    public function uploadSubmit(Request $request)
+    {
+        $this->validate($request, [
+
+        'photos'=>'required',
+        ]);
+            // dd($request->hasFile('photos'));
+        if($request->hasFile('photos'))
+        {
+            $allowedfileExtension=['pdf','jpg','png','docx'];
+            $files = $request->file('photos');
+            foreach($files as $file)
+            {
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $check=in_array($extension,$allowedfileExtension);
+                // dd($check);
+            }
+                if($check)
+                {
+                    foreach ($request->photos as $photo) 
+                    {
+                        $filename = $photo->store('photos');
+                        Portfolio_image::create([
+                        'user_id' => Auth::user()->id,
+                        'filename' => $filename
+                        ]);
+                    }
+                    Session::flash('success', "Uploaded Successfully");
+                    return redirect()->route('backend.photographer.index',Auth::user()->id);
+                }
+                else
+                {
+                // echo '<div class="alert alert-warning"><strong>Warning!</strong> Sorry Only Upload png , jpg , doc</div>';
+                Session::flash('danger', "Warning! Sorry Only Upload png , jpg , doc");
+                return redirect()->route('backend.photographer.index',Auth::user()->id);
+                }
+            }
+        }
+    }
+
+

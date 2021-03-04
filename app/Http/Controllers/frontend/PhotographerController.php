@@ -139,4 +139,6 @@ class PhotographerController extends Controller
     {
         //
     }
+
+    
 }

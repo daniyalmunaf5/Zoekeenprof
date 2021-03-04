@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\Country;
 use App\Models\States;
 use App\Models\City;
+use App\Models\Portfolio_image;
 use DB;
 USE Input;
 
@@ -34,10 +35,14 @@ class HomeController extends Controller
         return view('frontend.login');
     }
 
-    public function profile(User $user)
+    public function profile(User $user , Portfolio_image $portfolio_image)
     {
+        $portfolio_image = Portfolio_image::where('user_id',$user->id)->get();
+        // dd($portfolio_image[1]->filename);
         return view('frontend.profile')->with([
-            'user' => $user]);
+            'user' => $user,
+            'portfolio_image' => $portfolio_image
+            ]);
     }
 
     public function registration()

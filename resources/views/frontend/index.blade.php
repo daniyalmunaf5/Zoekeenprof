@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 
                 <div class="col-sm-12 mt-5">
                     <h3 class="text-center">Zoek naar een fotograaf drhyw?</h3>
@@ -35,7 +35,7 @@
                     
                 </div>
                 
-            </div>
+            </div> -->
 
             <div class="row justify-items-at-992 mt-5">
                 <h3>Waaroom ZookenProf?</h3>
