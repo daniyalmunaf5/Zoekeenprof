@@ -22,7 +22,7 @@ class UploadImageController extends Controller
         
 
         $folderPath = storage_path('/');  
-        // dd($folderPath);
+        // dd($file); 
 
         $path = storage_path('/').''.$file_base_path;
         
@@ -34,7 +34,7 @@ class UploadImageController extends Controller
    
         //$file->move($destinationPath,$file->getClientOriginalName());
         $number = mt_rand(1000000000, 9999999999);
-        $fileName = $number.''.time().'.'.$file->getClientOriginalExtension();  
+        $fileName = $number.''.time().'.'.$file->guessExtension();  
         //dd(public_path('uploads'));
         $destination_path = $folderPath.''.$file_base_path;
 

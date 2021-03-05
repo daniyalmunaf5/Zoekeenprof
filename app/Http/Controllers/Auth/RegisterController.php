@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Types_of_shoot;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -121,16 +123,16 @@ class RegisterController extends Controller
             $photographer->province = request('province');
             $photographer->postal_code = request('postal_code');
             $photographer->type_of_shoot = request('type_of_shoot');
-            dd(request('types_of_shoots[0]'));
-            $request->types_of_shoots = request('types_of_shoots');
-            foreach ($request->types_of_shoots as $types_of_shoot) 
-                    {
+            // dd(request('types_of_shoots'));
+            // $request->types_of_shoots = request('types_of_shoots');
+            // foreach ($data['types_of_shoots'] as $types_of_shoot) 
+            //         {
                         
-                        Types_of_shoot::create([
-                        'user_id' => Auth::user()->id,
-                        'types_of_shoots' => $types_of_shoot
-                        ]);
-                    }
+            //             Types_of_shoot::create([
+            //             'user_id' => request('id'),
+            //             'types_of_shoots' => $types_of_shoot
+            //             ]);
+            //         }
             $photographer->description = request('description');
             $photographer->experience = request('experience');
             $photographer->save();

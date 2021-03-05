@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('Users') }}</div>
                 
@@ -36,6 +36,7 @@
                                         {{method_field('DELETE')}}
                                         <button type="submit" class="btn btn-warning ml-3">Delete</button>
                                     </form>
+                                    <a href="{{ route('backend.photographer.index',$user->id )}}"><button type="button" class="ml-3 btn btn-success float-left">View</button></a>
                                 @endcan    
                                 </td>
                             </tr>

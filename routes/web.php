@@ -28,6 +28,7 @@ Route::get('/Register', 'App\Http\Controllers\frontend\HomeController@chooseregi
 Route::get('/Login', 'App\Http\Controllers\frontend\HomeController@login')->name('custom-login');
 Route::get('/search-photographer', 'App\Http\Controllers\frontend\HomeController@searchphotographer')->name('search-photographer')->middleware('auth');
 Route::post('/filter-photographer', 'App\Http\Controllers\frontend\HomeController@filterphotographer')->name('filter-photographer');
+Route::post('/filter2-photographer', 'App\Http\Controllers\frontend\HomeController@filter2photographer')->name('filter2-photographer');
 Route::get('/profile{user}/profile', 'App\Http\Controllers\frontend\HomeController@profile')->name('profile');
 
 
@@ -42,7 +43,8 @@ Route::get('/get-cities','App\Http\Controllers\frontend\PhotographerController@g
 // Route::post('get-cities-by-state','CountryStateCityController@getCity');
 
 Route::get('/CustomerRegister', 'App\Http\Controllers\frontend\CustomerController@register')->name('customer-register');
-
+Route::get('/Select-typeofshoot', 'App\Http\Controllers\frontend\PhotographerController@SelectTypeOfShootIndex')->name('Select-typeofshoot');
+Route::post('/Select-typeofshoot', 'App\Http\Controllers\frontend\PhotographerController@SelectTypeOfShootStore')->name('Select-typeofshoot');
 Route::get('/PhotographerRegister', 'App\Http\Controllers\frontend\PhotographerController@register')->name('photographer-register');
 
 

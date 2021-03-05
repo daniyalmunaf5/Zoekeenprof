@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\States;
 use App\Models\City;
 use App\Models\Role;
+use App\Models\Types_of_shoot;
 use DB;
 USE Input;
 use illuminate\Support\Facades\Auth;
@@ -140,5 +141,25 @@ class PhotographerController extends Controller
         //
     }
 
-    
+
+    public function SelectTypeOfShootIndex(User $user)
+    {
+        return view('frontend.photographer.choose-typeofshoots');
+    }
+
+    public function SelectTypeOfShootStore(Request $request)
+    {
+        // dd(request('types_of_shoots'));
+        // $request->types_of_shoots = request('types_of_shoots');
+        foreach ($request->types_of_shoots as $types_of_shoot) 
+                {
+                    
+                    Types_of_shoot::create([
+                    'user_id' => Auth::user()->id,
+                    'types_of_shoots' => $types_of_shoot
+                    ]);
+                }
+                return redirect()->route('backend.photographer.index',Auth::user()->id);
+                
+    }
 }

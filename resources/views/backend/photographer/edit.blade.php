@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 
 @section('content')
 <link href="{{ asset('asset/css/custom.css') }}" rel="stylesheet">
@@ -11,7 +11,7 @@
                 
                 <div class="card-body">
                    
-                    <form action="{{ route('backend.photographer.update', $user)}}" method="POST">
+                    <form action="{{ route('backend.photographer.update', $user)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{method_field('PUT')}}
 
@@ -101,31 +101,8 @@
                                 </span>
                             @enderror
 
-                            <select class="form-control text-capitalize select" name="type_of_shoot" required id="type_of_shoot">
-                                <option value="{{ $user->type_of_shoot }}">{{ $user->type_of_shoot }}</option>   
-                                <option value="Landscape">Landscape</option>   
-                                <option value="Wildlife">Wildlife</option>   
-                                <option value="Macro">Macro</option>   
-                                <option value="Underwater">Underwater</option>   
-                                <option value="Astrophotography">Astrophotography</option>   
-                                <option value="Aerial Photography">Aerial Photography</option>   
-                                <option value="Scientific">Scientific</option>   
-                                <option value="Portraits">Portraits</option>   
-                                <option value="Weddings">Weddings</option>   
-                                <option value="Documentary">Documentary</option>   
-                                <option value="Sports">Sports</option>   
-                                <option value="Commercial">Commercial</option>   
-                                <option value="Street Photography">Street Photography</option>   
-                                <option value="Event Photography">Event Photography</option>   
-                                <option value="Travel">Travel</option>   
-                                <option value="Pet Photography">Pet Photography</option>   
-                                <option value="Product Photography">Product Photography</option>   
-                                <option value="Food">Food</option>   
-                                <option value="Still Life Photography">Still Life Photography</option>
-                                <option value="Architecture">Architecture</option>   
-                                <option value="Other Types of Photography">Other Types of Photography</option>   
-                            </select>
-                            @error('type_of_shoot')
+                            <input id="profilepic" style="height:48px;" placeholder="profilepic" type="file" class="form-control @error('province') is-invalid @enderror" name="profilepic" value="{{ $user->profilepic }}" required>
+                            @error('profilepic')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -139,6 +116,23 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            @can('edit-users')
+
+                            <div class="form-group row">
+                                <label for="roles" class="col-md-2 col-form-label text-md-right">Roles</label>
+
+                                <div class="col-md-6">
+                                    @foreach($roles as $role)
+                                        <div class="form-check">
+                                            <input type="checkbox" name="roles[]" value="{{ $role->id}}"
+                                            @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
+                                            <label for="">{{ $role->name}}</label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                @endcan
+
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>

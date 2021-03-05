@@ -48,6 +48,11 @@ class VerificationController extends Controller
             return $this->redirectTo;
         }
 
+        elseif(Auth::user()->hasRole('photographer')){
+            $this->redirectTo = route('Select-typeofshoot');
+            return $this->redirectTo;
+        }
+
         $this->redirectTo = route('frontend.home');
         return $this->redirectTo;
 

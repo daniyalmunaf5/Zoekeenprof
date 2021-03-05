@@ -9,8 +9,13 @@
                 
                 <div class="container">
                 <br>
-              <h3 class="black bold">Profile</h3>
-
+                <div class="row">
+                <div class="col-6"><h3 class="black bold">Profile</h3></div>
+                <div class="col-6"> <a href="{{route('Select-typeofshoot')}}"><button style="float:right;" type="button" class="btn btn-primary ">Add Types of Shoot</button></a></div>
+                
+                </div>
+              
+             
     <div class="main-body">
     
           <!-- Breadcrumb -->
@@ -168,7 +173,10 @@
                       <h6 class="mb-0">Type Of Shoot</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        {{$user->type_of_shoot}}
+                      @foreach($types_of_shoots as $types_of_shoot)
+
+                      {{$types_of_shoot->types_of_shoots}} ,
+                        @endforeach
                     </div>
                   </div>
                   <hr>

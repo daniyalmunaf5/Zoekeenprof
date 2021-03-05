@@ -35,9 +35,9 @@
                     </div>
                     <br>
 
-                    <div style="border: 1px solid;;margin-left: 25px;" class="col-md-3">
+                    <!-- <div style="border: 1px solid;;margin-left: 25px;" class="col-md-3">
                         <a href="book-photographer-step-1.html"><p class="text-center mt-2 bold black"><i class="m-1 fa fa-eur"></i>prijsopgave</p></a>
-                    </div>
+                    </div> -->
                 </div>
                 <br><br><br>
 

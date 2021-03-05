@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Country;
 use Gate;
 use Illuminate\Http\Request;
 
@@ -46,9 +47,11 @@ class UsersController extends Controller
         if(Gate::denies('edit-users')){
             return redirect()->route('backend.users.index');
         }
+        $countries = Country::get(["name","id"]);
 
         $roles = Role::all();
         return view('backend.users.edit')->with([
+            'countries' => $countries,
             'user' => $user,
             'roles' => $roles
         ]);

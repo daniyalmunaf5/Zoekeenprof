@@ -163,7 +163,7 @@
                                 </span>
                             @enderror
 
-                            <select class="form-control text-capitalize select" name="type_of_shoot" required id="type_of_shoot">
+                            <!-- <select style="height:48px;" class="form-control text-capitalize select" name="type_of_shoot" required id="type_of_shoot">
                                 <option value="">Select Type Of Shoot</option>   
                                 <option value="Landscape">Landscape</option>   
                                 <option value="Wildlife">Wildlife</option>   
@@ -191,9 +191,9 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror -->
 
-                            <select class="form-control text-capitalize select" name="types_of_shoots[]" id="type_of_shoots" multiple="multiple">
+                            <!-- <select class="form-control text-capitalize select" name="types_of_shoots[]" id="type_of_shoots" multiple="multiple">
                                 <option value="">Select Types Of Shoots</option>   
                                 <option value="Landscape">Landscape</option>   
                                 <option value="Wildlife">Wildlife</option>   
@@ -221,9 +221,9 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror -->
 
-                            <input id="profilepic" placeholder="profilepic" type="file" class="form-control @error('province') is-invalid @enderror" name="profilepic" value="{{ old('profilepic') }}" required autocomplete="profilepic" autofocus>
+                            <input id="profilepic" style="height:48px;" placeholder="profilepic" type="file" class="form-control @error('province') is-invalid @enderror" name="profilepic" value="{{ old('profilepic') }}" required autocomplete="profilepic" autofocus>
                             @error('profilepic')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

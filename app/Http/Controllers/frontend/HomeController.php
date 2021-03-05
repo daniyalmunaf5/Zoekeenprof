@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\Country;
 use App\Models\States;
 use App\Models\City;
+use App\Models\Types_of_shoot;
 use App\Models\Portfolio_image;
 use DB;
 USE Input;
@@ -79,15 +80,30 @@ class HomeController extends Controller
         // $users = User::with(['roles' => where('name', 'photographer')
         // ]);
         // return view('frontend.search-photographer')->with('users', $users);
-        $data['users'] = User::whereHas('roles' , function($query) {
-            $query->where('name','photographer');
-        })
-        
-        ->where('country',$request->country)
-        ->where('type_of_shoot',$request->type_of_shoot)
+        // $id = DB::table('types_of_shoots')
+        // ->select('id')
+        // ->where('types_of_shoots','=', $request->type_of_shoot)
+        // ->first();
+        $id = Types_of_shoot::where('types_of_shoots',$request->type_of_shoot)->pluck('user_id');
+        // dd( $id[0] );
+
+        foreach($id as $user_ids)
+        {
+            $data['users'] = User::whereHas('roles' , function($query) {
+                $query->where('name','photographer');
+            })
+            
+            ->where('country',$request->country)
+            ->where('id',$user_ids)
 
         
-        ->get();
+            
+            
+            ->get();
+            // dd( $user_ids);
+        }
+
+        // dd( $data['users']);
         $data['countries'] = Country::get(["name","id"]);
 
         // dd($request->country,$users);
@@ -96,6 +112,43 @@ class HomeController extends Controller
         return view('frontend.search-photographer',$data);
     }
 
+
+    public function filter2photographer(Request $request )
+    {
+        // dd('hello');
+        // $users = User::with(['roles' => where('name', 'photographer')
+        // ]);
+        // return view('frontend.search-photographer')->with('users', $users);
+        // $id = DB::table('types_of_shoots')
+        // ->select('id')
+        // ->where('types_of_shoots','=', $request->type_of_shoot)
+        // ->first();
+        $id = Types_of_shoot::where('types_of_shoots',$request->type_of_shoot)->pluck('user_id');
+        // dd( $id[0] );
+
+        foreach($id as $user_ids)
+        {
+            $data['users'] = User::whereHas('roles' , function($query) {
+                $query->where('name','photographer');
+            })
+            
+            ->where('id',$user_ids)
+
+        
+            
+            
+            ->get();
+            // dd( $user_ids);
+        }
+
+        // dd( $data['users']);
+        $data['countries'] = Country::get(["name","id"]);
+
+        // dd($request->country,$users);
+
+        // dd(Auth::user()->country);   
+        return view('frontend.search-photographer',$data);
+    }
 
     
 
