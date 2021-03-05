@@ -84,7 +84,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if($data['user']=='customer'){
-
+        
+        $profilepic = app('App\Http\Controllers\frontend\UploadImageController')->storage_upload(request('profilepic'),'/app/public/CustomerRegister/');
+    
         $customer = new User();
         $customer->email = request('email');
         $customer->name = request('name');
@@ -94,6 +96,7 @@ class RegisterController extends Controller
         $customer->country = request('country');
         $customer->city = request('city');
         $customer->province = request('province');
+        $customer->profilepic = $profilepic;
         $customer->postal_code = request('postal_code');
         $customer->save();
 

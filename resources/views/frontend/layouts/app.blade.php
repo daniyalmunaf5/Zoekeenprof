@@ -81,7 +81,7 @@ $("body").on("change","#states",function(){
                 @can('edit-users')
                 <a href="{{ route('backend.users.index')}}">Dashboard</a>
                 @endcan
-                @can('photographer-dashboard')
+                @can('photographer-user-dashboard')
                 <a href="{{ route('backend.photographer.index',Auth::user()->id)}}">My Profile</a>
                 @endcan
                 

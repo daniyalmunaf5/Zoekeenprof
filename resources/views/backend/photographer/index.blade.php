@@ -11,8 +11,10 @@
                 <br>
                 <div class="row">
                 <div class="col-6"><h3 class="black bold">Profile</h3></div>
+                @can('photographer')
+
                 <div class="col-6"> <a href="{{route('Select-typeofshoot')}}"><button style="float:right;" type="button" class="btn btn-primary ">Add Types of Shoot</button></a></div>
-                
+                @endcan
                 </div>
               
              
@@ -45,7 +47,10 @@
                       <p class="text-secondary mb-1">{{$user->company_name}}</p>
                       <p class="text-muted font-size-sm">{{$user->address}}, {{$user->country}}</p>
                       <!-- <button class="btn btn-primary">Follow</button> -->
+          @can('photographer')
+                      
                       <a href="{{ route('backend.photographer.edit',$user->id )}}"><button type="button" class="btn btn-primary ">Edit</button></a>
+                    @endcan
                     </div>
                   </div>
                 </div>
@@ -123,6 +128,8 @@
                     </div>
                   </div>
                   <hr>
+                   @can('photographer')
+
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Company Name</h6>
@@ -132,6 +139,7 @@
                     </div>
                   </div>
                   <hr>
+                  @endcan
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Country</h6>
@@ -168,6 +176,8 @@
                     </div>
                   </div>
                   <hr>
+                @can('photographer')
+
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Type Of Shoot</h6>
@@ -197,6 +207,7 @@
                         {{$user->description}}
                     </div>
                   </div>
+                  @endcan
 
                   
                 </div>
@@ -260,25 +271,28 @@
               </div> -->
             </div>
           </div>
+          @can('photographer')
+          
           <div class="container">
-          <br>
+              <br>
               <h3 class="black bold">Photgraphy Portfolio </h3>
-<br>
+              <br>
               <div class=row>
-                         @foreach($portfolio_image as $portfolio_image)
+                  @foreach($portfolio_image as $portfolio_image)
 
-                            <div class="col-lg-3 col-md-6">
-                                <img width="100%" height="150px" src="{{asset('../storage/app/'.$portfolio_image->filename)}}" alt="">
-                                <br><br>
-                            </div>
+                    <div class="col-lg-3 col-md-6">
+                        <img width="100%" height="150px" src="{{asset('../storage/app/'.$portfolio_image->filename)}}" alt="">
+                        <br><br>
+                    </div>
 
-                        @endforeach
-                        <div class="col-lg-3 col-md-6">
-                                <a href="{{ route('multiuploads')}}"><img width="100%" height="150px" style="border: 1px solid;border-color: black;" src="{{ asset('asset/images/add_image.PNG') }}" alt=""></a>
-                                <br><br>
-                            </div>
-                        </div>
-                        </div>
+                  @endforeach
+                  <div class="col-lg-3 col-md-6">
+                          <a href="{{ route('multiuploads')}}"><img width="100%" height="150px" style="border: 1px solid;border-color: black;" src="{{ asset('asset/images/add_image.PNG') }}" alt=""></a>
+                          <br><br>
+                  </div>
+              </div>
+          </div>
+          @endcan
         </div>
     </div>
                 

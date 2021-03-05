@@ -34,7 +34,7 @@ class UploadImageController extends Controller
    
         //$file->move($destinationPath,$file->getClientOriginalName());
         $number = mt_rand(1000000000, 9999999999);
-        $fileName = $number.''.time().'.'.$file->guessExtension();  
+        $fileName = $number.''.time().'.'.$file->getClientOriginalName();  
         //dd(public_path('uploads'));
         $destination_path = $folderPath.''.$file_base_path;
 

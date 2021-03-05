@@ -11,7 +11,7 @@
                         <h1 class="text-center sky-blue" >Register</h1>
                         <br><br>
 
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
                             @csrf
 
                             <input type="hidden" id="user" name="user" value="customer">
@@ -87,6 +87,13 @@
 
                             <input id="password-confirm" placeholder="Confirm Password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                            <input id="profilepic" style="height:48px;" placeholder="profilepic" type="file" class="form-control @error('province') is-invalid @enderror" name="profilepic" value="{{ old('profilepic') }}" required autocomplete="profilepic" autofocus>
+                            @error('profilepic')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
