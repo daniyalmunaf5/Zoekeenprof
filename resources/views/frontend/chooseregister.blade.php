@@ -22,7 +22,7 @@
                     <div class="col-lg-2">
                     </div>
                     <div class="col-lg-8">
-                        <br><a href="{{ route('home')}}">
+                        <br><a href="{{ route('frontend.home')}}">
                             <img style="padding-right: 15px;" src="asset/images/logo/Capture.PNG" alt="logo" >
                         </a>
                         <br><br>

@@ -14,6 +14,12 @@
 <link rel="stylesheet" href="asset/css/theme2.css"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+        function selectElement(id, valueToSelect) {
+            let element = document.getElementById(id);
+            element.value = valueToSelect;
+        }
+    </script>
 </head>
     <body>  
 
@@ -29,7 +35,7 @@
                 <a href=""></a>
                     <a href="{{ route('about-us')}}" style="color: white;">About Us</a>
                     @if (Route::has('register'))
-                    <a href="{{ route('registration')}}" style="color: white;">Register</a>
+                    <a href="{{ route('choose-register')}}" style="color: white;">Register</a>
                     @endif
                     @guest
                     @if (Route::has('login'))
@@ -59,7 +65,7 @@
                         <h1 class="text-center white" >Register</h1>
                         <br><br>
                         
-                        <form enctype="multipart/form-data" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                        <form enctype="multipart/form-data" method="POST" action="{{ route('frontend.photographer.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <input type="hidden" id="user" name="user" value="photographer">
@@ -100,7 +106,7 @@
                                 </span>
                             @enderror
 
-                            <select class="form-control text-capitalize select" name="country" required id="country">
+                            <select class="form-control text-capitalize select @if($errors->get('country')) is-invalid @endif" name="country" value="{{ old('country') }}" required id="country">
                                 <option value="">Select Country</option>   
                                 @foreach ($countries as $country) 
                                 <option value="{{$country->name}}">
@@ -128,7 +134,7 @@
                                 </span>
                             @enderror
 
-                            <input id="postal_code" placeholder="Postal Code" type="number" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" autofocus>
+                            <input id="postal_code" placeholder="Postal Code" type="number" min="0" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" autofocus>
                             @error('postal_code')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -156,7 +162,7 @@
                                 </span>
                             @enderror
 
-                            <input id="experience" placeholder="experience" type="number" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ old('experience') }}" required autocomplete="experience" autofocus>
+                            <input id="experience" placeholder="Years Of Experience" type="number" min="0" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ old('experience') }}" required autocomplete="experience" autofocus>
                             @error('experience')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -223,14 +229,16 @@
                                 </span>
                             @enderror -->
 
-                            <input id="profilepic" style="height:48px;" placeholder="profilepic" type="file" class="form-control @error('province') is-invalid @enderror" name="profilepic" value="{{ old('profilepic') }}" required autocomplete="profilepic" autofocus>
+                    
+
+                            <input id="profilepic" style="height:48px;" placeholder="profilepic" type="file" class="form-control @if($errors->get('profilepic')) is-invalid @endif" name="profilepic" value="{{ old('profilepic') }}" required autocomplete="profilepic" autofocus>
                             @error('profilepic')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                             
-                            <textarea id="description" rows="4" cols="50" placeholder="description" type="text" class="form-control textarea @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
+                            <textarea id="description" rows="4" cols="50" placeholder="description" type="text" class="form-control textarea @error('description') is-invalid @enderror" name="description"  required autocomplete="description" autofocus>{{ old('description') }}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -249,6 +257,11 @@
             </div></div>
         </div>
 
+
+        <script>
+    
+    selectElement('country', '{{old('country')}}');
+</script>
 
     <script type="text/javascript">
 

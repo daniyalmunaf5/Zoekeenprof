@@ -15,6 +15,8 @@ USE Input;
 use illuminate\Support\Facades\Auth;
 use illuminate\Support\Facades\Task;
 use Illuminate\Support\Facades\Hash;
+use Session;
+
 
 class PhotographerController extends Controller
 {
@@ -71,25 +73,86 @@ class PhotographerController extends Controller
      */
     public function store(Request $request)
     {
-        $photographer = new User();
-        $photographer->email = request('email');
-        $photographer->name = request('name');
-        $photographer->father_name = request('father_name');
-        $photographer->password = Hash::make(request('password'));
-        $photographer->phone_number = request('phone_number');
-        $photographer->address = request('address');
-        $photographer->country = request('country');
-        $photographer->city = request('city');
-        $photographer->province = request('province');
-        $photographer->postal_code = request('postal_code');
-        $photographer->type_of_shoot = request('type_of_shoot');
-        $photographer->save();
+        // $photographer = new User();
+        // $photographer->email = request('email');
+        // $photographer->name = request('name');
+        // $photographer->father_name = request('father_name');
+        // $photographer->password = Hash::make(request('password'));
+        // $photographer->phone_number = request('phone_number');
+        // $photographer->address = request('address');
+        // $photographer->country = request('country');
+        // $photographer->city = request('city');
+        // $photographer->province = request('province');
+        // $photographer->postal_code = request('postal_code');
+        // $photographer->type_of_shoot = request('type_of_shoot');
+        // $photographer->save();
 
-        $role = Role::select('id')->where('name', 'photographer')->first();
+        // $role = Role::select('id')->where('name', 'photographer')->first();
 
-        $photographer->roles()->attach($role);
+        // $photographer->roles()->attach($role);
 
-        return redirect()->route('home');
+        $valiedation_from_array = [
+             
+            'email' => 'email',
+            'name' => 'required',
+            'father_name' => 'required',
+            'password' => 'required|confirmed|min:8', 
+            'password_confirmation' => 'required|same:password|min:6',
+            'phone_number' => 'required',
+            'company_name' => 'required',
+            'address' => 'required', 
+            'country' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'postal_code' => 'required',
+            'type_of_shoot' => 'required',
+            'description' => 'required',
+            'experience' => 'required'
+            
+            ];
+
+            
+
+            $this->validate($request, $valiedation_from_array);
+
+        $profilepic = app('App\Http\Controllers\frontend\UploadImageController')->storage_upload(request('profilepic'),'/app/public/PhotographerRegister/');
+            // dd($profilepic);
+            $photographer = new User();
+            $photographer->email = request('email');
+            $photographer->name = request('name');
+            $photographer->father_name = request('father_name');
+            $photographer->password = Hash::make(request('password'));
+            $photographer->phone_number = request('phone_number');
+            $photographer->company_name = request('company_name');
+            $photographer->address = request('address');
+            $photographer->country = request('country');
+            $photographer->profilepic = $profilepic;
+            $photographer->city = request('city');
+            $photographer->province = request('province');
+            $photographer->postal_code = request('postal_code');
+            $photographer->type_of_shoot = request('type_of_shoot');
+            // dd(request('types_of_shoots'));
+            // $request->types_of_shoots = request('types_of_shoots');
+            // foreach ($data['types_of_shoots'] as $types_of_shoot) 
+            //         {
+                        
+            //             Types_of_shoot::create([
+            //             'user_id' => request('id'),
+            //             'types_of_shoots' => $types_of_shoot
+            //             ]);
+            //         }
+            $photographer->description = request('description');
+            $photographer->experience = request('experience');
+            $photographer->save();
+    
+            $role = Role::select('id')->where('name', 'photographer')->first();
+    
+            $photographer->roles()->attach($role);
+                
+            // return $photographer;
+            Session::flash('success', "Registered Successfully");
+
+        return redirect()->route('custom-login');
     }
 
     /**

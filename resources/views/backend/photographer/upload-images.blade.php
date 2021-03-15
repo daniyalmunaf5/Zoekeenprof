@@ -1,13 +1,15 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 
 @section('content')
 <link href="{{ asset('asset/css/custom.css') }}" rel="stylesheet">
+                            <br><br>
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
             <div class="card">
-                <div class="card-header">{{ __('Edit Profile') }}</div>
+                <div class="card-header">{{ __('Upload Images') }}</div>
                 
                 <div class="card-body">
                    
@@ -22,8 +24,13 @@
                         <button type="submit" class="btn btn-primary">Upload</button>
                     </form>
                 </div>
-                
+                                       
+
             </div>
+                 <br><br>                            <br><br>
+                            <br><br>
+
+                            <br><br>
         </div>
     </div>
 </div>

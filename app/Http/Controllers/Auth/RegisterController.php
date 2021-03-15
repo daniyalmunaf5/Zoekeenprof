@@ -32,8 +32,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+    // protected $redirectTo = RouteServiceProvider::HOME;
+        
     /**
      * Create a new controller instance.
      *
@@ -148,6 +148,23 @@ class RegisterController extends Controller
             }
 
     }
+
+    public function redirectTo()
+        {
+            if(Auth::user()->hasRole('admin')){
+                $this->redirectTo = route('backend.users.index');
+                return $this->redirectTo;
+            }
+
+            elseif(Auth::user()->hasRole('photographer')){
+                $this->redirectTo = route('Select-typeofshoot');
+                return $this->redirectTo;
+            }
+
+            $this->redirectTo = route('frontend.home');
+            return $this->redirectTo;
+
+        }
 
     
 }

@@ -78,7 +78,7 @@
                                 </span>
                             @enderror
 
-                            <input id="postal_code" placeholder="Postal Code" type="number" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $user->postal_code }}" required autocomplete="postal_code" autofocus>
+                            <input id="postal_code" placeholder="Postal Code" type="number" min="0" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $user->postal_code }}" required autocomplete="postal_code" autofocus>
                             @error('postal_code')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -94,7 +94,7 @@
 
                             
 
-                            <input id="experience" placeholder="experience" type="number" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ $user->experience }}" required autocomplete="experience" autofocus>
+                            <input id="experience" placeholder="Years Of Experience" type="number" min="0" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ $user->experience }}" required autocomplete="experience" autofocus>
                             @error('experience')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

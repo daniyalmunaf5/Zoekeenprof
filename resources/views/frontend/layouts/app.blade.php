@@ -88,8 +88,11 @@ $("body").on("change","#states",function(){
                 <a href="{{ route('about-us')}}">About Us</a>
 
                 @guest
-                @if (Route::has('register'))
+                <!-- @if (Route::has('register'))
                 <a href="{{ route('registration')}}">Register</a>
+                @endif -->
+                @if (Route::has('register'))
+                <a href="{{ route('choose-register')}}">Register</a>
                 @endif
                 @if (Route::has('login'))
                 <a href="{{ route('custom-login')}}">Login</a>

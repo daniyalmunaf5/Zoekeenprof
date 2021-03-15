@@ -27,8 +27,11 @@
                     <!-- <a href="#" class="active">Home</a> -->
                 <a href=""></a>
                     <a href="{{ route('about-us')}}" style="color: white;">About Us</a>
+                    <!-- @if (Route::has('register'))
+                    <a href="{{ route('registration')}}">Register</a>
+                    @endif -->
                     @if (Route::has('register'))
-                    <a href="{{ route('registration')}}" style="color: white;">Register</a>
+                    <a href="{{ route('choose-register')}}" style="color: white;">Register</a>
                     @endif
                     @guest
                     @if (Route::has('login'))

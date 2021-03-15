@@ -8,13 +8,16 @@
 @else
 
             <div class="hero-text container">
-                   
+            
                 <div class="row">
                 
                     <div class="col-lg-2">
                     </div>
                     
                     <div class="col-lg-8">
+                    @if (Session::has('success'))
+   <div class="alert alert-success">{{ Session::get('success') }}</div>
+@endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <br>
@@ -45,9 +48,18 @@
                         <label class="form-check-label bold" for="remember">
                             {{ __('Remember Me') }}
                         </label>
+                        
                         </div>
                         
                         <a><input type="submit" value="Login"></a>
+                        <br>
+                        <label  class="form-check-label  bold"    >
+                            OR
+                        </label>    
+                        <br>
+                        <a href="{{ route('choose-register')}}"><label  class="form-check-label  bold">
+                            Create a New Account
+                        </label></a>
                     </form>
 
                     </div>

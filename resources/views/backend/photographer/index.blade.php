@@ -92,6 +92,8 @@
                     </div>
                   </div>
                   <hr>
+          @can('photographer')
+
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Father Name</h6>
@@ -101,6 +103,7 @@
                     </div>
                   </div>
                   <hr>
+                  @endcan
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Email</h6>

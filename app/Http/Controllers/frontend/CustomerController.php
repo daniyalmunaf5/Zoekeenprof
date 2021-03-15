@@ -12,6 +12,8 @@ use App\Models\City;
 use DB;
 USE Input;
 use Illuminate\Support\Facades\Hash;
+use Session;
+
 
 
 
@@ -54,6 +56,41 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        // $customer = new User();
+        // $customer->email = request('email');
+        // $customer->name = request('name');
+        // $customer->password = Hash::make(request('password'));
+        // $customer->phone_number = request('phone_number');
+        // $customer->address = request('address');
+        // $customer->country = request('country');
+        // $customer->city = request('city');
+        // $customer->province = request('province');
+        // $customer->postal_code = request('postal_code');
+        // $customer->save();
+
+        // $role = Role::select('id')->where('name', 'user')->first();
+
+        // $customer->roles()->attach($role);
+
+        $valiedation_from_array = [
+             
+            'email' => 'email',
+            'name' => 'required',
+            'password' => 'required|confirmed|min:8', 
+            'password_confirmation' => 'required|same:password|min:6',
+            'phone_number' => 'required',
+            'address' => 'required', 
+            'country' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'postal_code' => 'required',
+            
+            ];
+
+            $this->validate($request, $valiedation_from_array);
+
+        $profilepic = app('App\Http\Controllers\frontend\UploadImageController')->storage_upload(request('profilepic'),'/app/public/CustomerRegister/');
+    
         $customer = new User();
         $customer->email = request('email');
         $customer->name = request('name');
@@ -63,6 +100,7 @@ class CustomerController extends Controller
         $customer->country = request('country');
         $customer->city = request('city');
         $customer->province = request('province');
+        $customer->profilepic = $profilepic;
         $customer->postal_code = request('postal_code');
         $customer->save();
 
@@ -70,7 +108,9 @@ class CustomerController extends Controller
 
         $customer->roles()->attach($role);
 
-        return redirect()->route('frontend.home');
+        Session::flash('success', "Registered Successfully");
+
+        return redirect()->route('custom-login');
 
     }
 

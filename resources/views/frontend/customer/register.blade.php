@@ -1,7 +1,12 @@
 @extends('frontend.customer.layouts.app')
 
 @section('content')
-        
+<script>
+        function selectElement(id, valueToSelect) {
+            let element = document.getElementById(id);
+            element.value = valueToSelect;
+        }
+    </script>
             <div class="hero-text-3">
                 <div class="row">
                     <div class="col-lg-2 col-md-1">
@@ -11,7 +16,7 @@
                         <h1 class="text-center sky-blue" >Register</h1>
                         <br><br>
 
-                        <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
+                        <form method="POST" enctype="multipart/form-data" action="{{ route('frontend.customer.store') }}">
                             @csrf
 
                             <input type="hidden" id="user" name="user" value="customer">
@@ -37,7 +42,7 @@
                                 </span>
                             @enderror
 
-                            <select class="form-control text-capitalize select" name="country" required id="country">
+                            <select class="form-control text-capitalize select @if($errors->get('country')) is-invalid @endif" name="country" value="{{ old('country') }}" required id="country">
                                 <option value="">Select Country</option>   
                                 @foreach ($countries as $country) 
                                 <option value="{{$country->name}}">
@@ -65,7 +70,7 @@
                                 </span>
                             @enderror
 
-                            <input id="postal_code" placeholder="Postal Code" type="number" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" autofocus>
+                            <input id="postal_code" placeholder="Postal Code" type="number" min="0" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" autofocus>
                             @error('postal_code')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -109,6 +114,10 @@
             </div></div>
         </div>
     </body>
+    <script>
+    
+    selectElement('country', '{{old('country')}}');
+</script>
 @endsection
 
 

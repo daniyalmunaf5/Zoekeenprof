@@ -17,19 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
+Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
-Route::get('/', 'App\Http\Controllers\frontend\HomeController@index')->name('frontend.home');
-Route::get('/AboutUs', 'App\Http\Controllers\frontend\HomeController@aboutus')->name('about-us');
+Route::get('/', 'App\Http\Controllers\frontend\HomeController@index')->name('frontend.home')->middleware('auth');
+Route::get('/AboutUs', 'App\Http\Controllers\frontend\HomeController@aboutus')->name('about-us')->middleware('auth');
 Route::get('/registration', 'App\Http\Controllers\frontend\HomeController@registration')->name('registration');
 Route::get('/Register', 'App\Http\Controllers\frontend\HomeController@chooseregister')->name('choose-register');
 Route::get('/Login', 'App\Http\Controllers\frontend\HomeController@login')->name('custom-login');
 Route::get('/search-photographer', 'App\Http\Controllers\frontend\HomeController@searchphotographer')->name('search-photographer')->middleware('auth');
-Route::post('/filter-photographer', 'App\Http\Controllers\frontend\HomeController@filterphotographer')->name('filter-photographer');
-Route::post('/filter2-photographer', 'App\Http\Controllers\frontend\HomeController@filter2photographer')->name('filter2-photographer');
-Route::get('/profile{user}/profile', 'App\Http\Controllers\frontend\HomeController@profile')->name('profile');
+Route::post('/filter-photographer', 'App\Http\Controllers\frontend\HomeController@filterphotographer')->name('filter-photographer')->middleware('auth');
+Route::post('/filter2-photographer', 'App\Http\Controllers\frontend\HomeController@filter2photographer')->name('filter2-photographer')->middleware('auth');
+Route::get('/profile{user}/profile', 'App\Http\Controllers\frontend\HomeController@profile')->name('profile')->middleware('auth');
 
 
 Route::get('/multiuploads', 'App\Http\Controllers\backend\PhotographerController@uploadForm')->name('multiuploads');
@@ -68,3 +70,12 @@ Route::namespace('App\Http\Controllers\backend')->prefix('backend')->name('backe
 Route::get('/backend{user}/profile', 'App\Http\Controllers\backend\PhotographerController@index')->name('backend.photographer.index');
 Route::get('/backend{user}/edit', 'App\Http\Controllers\backend\PhotographerController@edit')->name('backend.photographer.edit');
 Route::PUT('backend/{user}', 'App\Http\Controllers\backend\PhotographerController@update')->name('backend.photographer.update');
+
+
+Route::get('/phpartisanmigrate', function () {
+$exitCode = Artisan::call('migrate');
+});
+
+Route::get('/phpartisandbseed', function () {
+$exitCode = Artisan::call('db:seed');
+});
