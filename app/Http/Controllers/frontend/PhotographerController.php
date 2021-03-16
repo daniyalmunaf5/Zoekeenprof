@@ -101,7 +101,6 @@ class PhotographerController extends Controller
             'phone_number' => 'required',
             'company_name' => 'required',
             'address' => 'required', 
-            'country' => 'required',
             'city' => 'required',
             'province' => 'required',
             'postal_code' => 'required',
@@ -114,7 +113,7 @@ class PhotographerController extends Controller
 
             $this->validate($request, $valiedation_from_array);
 
-        $profilepic = app('App\Http\Controllers\frontend\UploadImageController')->storage_upload(request('profilepic'),'/app/public/PhotographerRegister/');
+            $profilepic = app('App\Http\Controllers\frontend\UploadImageController')->storage_upload(request('profilepic'),'/app/public/PhotographerRegister/');
             // dd($profilepic);
             $photographer = new User();
             $photographer->email = request('email');
@@ -124,7 +123,7 @@ class PhotographerController extends Controller
             $photographer->phone_number = request('phone_number');
             $photographer->company_name = request('company_name');
             $photographer->address = request('address');
-            $photographer->country = request('country');
+            $photographer->country = 'Netherlands';
             $photographer->profilepic = $profilepic;
             $photographer->city = request('city');
             $photographer->province = request('province');

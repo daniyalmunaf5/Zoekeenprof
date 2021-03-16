@@ -80,7 +80,6 @@ class CustomerController extends Controller
             'password_confirmation' => 'required|same:password|min:8',
             'phone_number' => 'required',
             'address' => 'required', 
-            'country' => 'required',
             'city' => 'required',
             'province' => 'required',
             'postal_code' => 'required',
@@ -97,7 +96,7 @@ class CustomerController extends Controller
         $customer->password = Hash::make(request('password'));
         $customer->phone_number = request('phone_number');
         $customer->address = request('address');
-        $customer->country = request('country');
+        $customer->country = 'Netherlands';
         $customer->city = request('city');
         $customer->province = request('province');
         $customer->profilepic = $profilepic;

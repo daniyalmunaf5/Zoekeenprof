@@ -47,19 +47,26 @@
                         </span>
                     @enderror
                     <h3 class="dark-blue mt-2" style="font-size: 15px;">PLAATS</h3>
-                    <select class="form-control text-capitalize select" name="country" >
-                        <option value="">Select Country</option>   
-                        @foreach ($countries as $country) 
-                        <option value="{{$country->name}}">
-                        {{$country->name}}
-                        </option>
-                        @endforeach
-                    </select>
-                    @error('country')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <select style="height:48px;" class="form-control text-capitalize select" name="province" required id="province">
+                                <option value="">Select Province</option>   
+                                <option value="Drenthe">Drenthe</option>   
+                                <option value="Flevoland">Flevoland</option>   
+                                <option value="Friesland">Friesland</option>   
+                                <option value="Gelderland">Gelderland</option>   
+                                <option value="Groningen">Groningen</option>   
+                                <option value="Groningen">Groningen</option>   
+                                <option value="Noord-Brabant">Noord-Brabant</option>   
+                                <option value="Noord-Holland">Noord-Holland</option>   
+                                <option value="Overijssel">Overijssel</option>   
+                                <option value="Zuid-Holland">Zuid-Holland</option>   
+                                <option value="Utrecht">Utrecht</option>   
+                                <option value="Zeeland">Zeeland</option>   
+                            </select>
+                            @error('province')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                     <input type="submit" value="Search" class="register-button">
                     <a href="{{route('search-photographer')}}"><input type="button" value="Refresh" class="register-button"></a>
                     <br><br>

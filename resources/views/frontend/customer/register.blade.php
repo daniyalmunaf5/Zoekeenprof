@@ -42,7 +42,7 @@
                                 </span>
                             @enderror
 
-                            <select class="form-control text-capitalize select @if($errors->get('country')) is-invalid @endif" name="country" value="{{ old('country') }}" required id="country">
+                            <!-- <select class="form-control text-capitalize select @if($errors->get('country')) is-invalid @endif" name="country" value="{{ old('country') }}" required id="country">
                                 <option value="">Select Country</option>   
                                 @foreach ($countries as $country) 
                                 <option value="{{$country->name}}">
@@ -54,7 +54,7 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror -->
 
                             <input id="city" placeholder="City" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus>
                             @error('city')
@@ -63,7 +63,21 @@
                                 </span>
                             @enderror
 
-                            <input id="province" placeholder="Province" type="text" class="form-control @error('province') is-invalid @enderror" name="province" value="{{ old('province') }}" required autocomplete="province" autofocus>
+                            <select style="height:48px;" class="form-control text-capitalize select" name="province" required id="province">
+                                <option value="">Select Province</option>   
+                                <option value="Drenthe">Drenthe</option>   
+                                <option value="Flevoland">Flevoland</option>   
+                                <option value="Friesland">Friesland</option>   
+                                <option value="Gelderland">Gelderland</option>   
+                                <option value="Groningen">Groningen</option>   
+                                <option value="Groningen">Groningen</option>   
+                                <option value="Noord-Brabant">Noord-Brabant</option>   
+                                <option value="Noord-Holland">Noord-Holland</option>   
+                                <option value="Overijssel">Overijssel</option>   
+                                <option value="Zuid-Holland">Zuid-Holland</option>   
+                                <option value="Utrecht">Utrecht</option>   
+                                <option value="Zeeland">Zeeland</option>   
+                            </select>
                             @error('province')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

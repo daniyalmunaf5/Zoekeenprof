@@ -70,7 +70,7 @@ class HomeController extends Controller
         ->where('country',Auth::user()->country)
         
         ->get();
-        $countries = Country::get(["name","id"]);
+        // $countries = Country::get(["name","id"]);
 
         // dd(Auth::user()->country);   
         if($users->isEmpty())
@@ -78,7 +78,7 @@ class HomeController extends Controller
             Session::flash('danger', "No Photographers Found In Your Country");
             
             return view('frontend.search-photographer')->with([
-                'countries' => $countries,
+                // 'countries' => $countries,
                 'users' => $users
             ]);
 
@@ -88,7 +88,7 @@ class HomeController extends Controller
             Session::flash('danger', "These are the Photographers Available in Your Country");
 
         return view('frontend.search-photographer')->with([
-            'countries' => $countries,
+            // 'countries' => $countries,
             'users' => $users
         ]);
         }
@@ -122,10 +122,10 @@ class HomeController extends Controller
         //     ->get();
         //     // dd( $user_ids);
         // }
-        $users = DB::table('types_of_shoots')->where('types_of_shoots.types_of_shoots', $request->type_of_shoot)->leftjoin('users as users', 'types_of_shoots.user_id', '=', 'users.id')->where('users.country', $request->country)->select('users.id','users.name', 'users.father_name', 'users.profilepic','users.company_name','users.description','users.country','users.address','users.experience','users.email')->get();
+        $users = DB::table('types_of_shoots')->where('types_of_shoots.types_of_shoots', $request->type_of_shoot)->leftjoin('users as users', 'types_of_shoots.user_id', '=', 'users.id')->where('users.province', $request->province)->select('users.id','users.name', 'users.father_name', 'users.profilepic','users.company_name','users.description','users.country','users.address','users.experience','users.email')->get();
         
         // dd( $data['users']);
-        $countries = Country::get(["name","id"]);
+        // $countries = Country::get(["name","id"]);
 
         // dd($request->country,$users);
 
@@ -135,7 +135,7 @@ class HomeController extends Controller
             Session::flash('danger', "No Result Found");
             
             return view('frontend.search-photographer')->with([
-                'countries' => $countries,
+                // 'countries' => $countries,
                 'users' => $users
             ]);
 
@@ -145,7 +145,7 @@ class HomeController extends Controller
             Session::flash('danger', "Search Result");
 
         return view('frontend.search-photographer')->with([
-            'countries' => $countries,
+            // 'countries' => $countries,
             'users' => $users
         ]);
         }
@@ -188,7 +188,7 @@ class HomeController extends Controller
         $users = DB::table('types_of_shoots')->where('types_of_shoots.types_of_shoots', $request->type_of_shoot)->leftjoin('users as users', 'types_of_shoots.user_id', '=', 'users.id')->select('users.id','users.name', 'users.father_name', 'users.profilepic','users.company_name','users.description','users.country','users.address','users.experience','users.email')->get();
 
         // dd( $data['users']);
-        $countries = Country::get(["name","id"]);
+        // $countries = Country::get(["name","id"]);
 
         // dd($request->country,$users);
 
@@ -198,7 +198,7 @@ class HomeController extends Controller
             Session::flash('danger', "No Result Found");
             
             return view('frontend.search-photographer')->with([
-                'countries' => $countries,
+                // 'countries' => $countries,
                 'users' => $users
             ]);
 
@@ -208,7 +208,7 @@ class HomeController extends Controller
             Session::flash('danger', "Search Result");
 
         return view('frontend.search-photographer')->with([
-            'countries' => $countries,
+            // 'countries' => $countries,
             'users' => $users
         ]);
         }
