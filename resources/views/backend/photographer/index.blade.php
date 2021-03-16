@@ -11,7 +11,7 @@
                 <br>
                 <div class="row">
                 <div class="col-6"><h3 class="black bold">Profile</h3></div>
-                @can('photographer')
+                @can('only-photographer')
 
                 <div class="col-6"> <a href="{{route('Select-typeofshoot')}}"><button style="float:right;" type="button" class="btn btn-primary ">Add Types of Shoot</button></a></div>
                 @endcan

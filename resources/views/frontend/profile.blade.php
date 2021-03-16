@@ -27,11 +27,7 @@
 
                 <div class="row d-flex justify-content-center">
                     <div style="border: 1px solid;;margin-left: 25px;" class=" col-md-3">
-                        <a href="chat.html"><p class="text-center mt-2 bold black"><i class="m-1 fa fa-envelope"></i>Bericht</p></a>
-                    </div>
-                    <br>
-                    <div style="border: 1px solid;;margin-left: 25px;" class="col-md-3">
-                        <a href="chat.html"><p class="text-center mt-2 bold black"><i class="m-1 fa fa-phone"></i>Terugbelverzoek</p></a>
+                        <a href="chat.html"><p class="text-center mt-2 bold black"><i class="m-1 fa fa-envelope"></i>Vraag Offerte</p></a>
                     </div>
                     <br>
 

@@ -74,10 +74,10 @@ class CustomerController extends Controller
 
         $valiedation_from_array = [
              
-            'email' => 'email',
+            'email' => 'required|email|unique:users',
             'name' => 'required',
             'password' => 'required|confirmed|min:8', 
-            'password_confirmation' => 'required|same:password|min:6',
+            'password_confirmation' => 'required|same:password|min:8',
             'phone_number' => 'required',
             'address' => 'required', 
             'country' => 'required',

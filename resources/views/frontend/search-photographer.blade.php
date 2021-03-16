@@ -134,8 +134,8 @@
         <div class="row">
             <div class="col-1"></div>
             <div class="col-10">
-                <br>
-                <h3 class=" justify-items-at-768 black  mt-3" style="font-size: 14px;">40 fotografen gevonden op basis van 1 filter</h3>
+                <!-- <br> -->
+                <!-- <h3 class=" justify-items-at-768 black  mt-3" style="font-size: 14px;">40 fotografen gevonden op basis van 1 filter</h3> -->
                 
             </div>
         </div>
@@ -162,8 +162,11 @@
                     <br><br>
                     
                     <!-- photographer -->
+                    @if (Session::has('danger'))
+                    <div class="alert alert-info">{{ Session::get('danger') }}</div>
+                    @endif
                     @foreach($users as $user)
-
+                    
                     <div class="row">
                         <div class="img text-center col-lg-3 col-md-5">
                             <a href="{{ route('profile',$user->id) }}"><img class="img-width-at-992" style="width: 180px;height: 250px;" src="{{asset('../storage/'.$user->profilepic)}}" alt=""></a>
@@ -181,13 +184,13 @@
 
                             <div class="row d-flex justify-content-center">
                                 <div style="border: 1px solid;;margin-left: 25px;height: 40px;" class=" col-lg-3">
-                                    <a href="{{ route('profile',$user->id) }}"><p class="text-center mt-2 bold black">Bekijk profiel</p></a>
+                                    <a href=""><p class="text-center mt-2 bold black">Vraag Offerte </p></a>
                                 </div>
-                                <br>
+                                <!-- <br>
                                 <div style="border: 1px solid;;margin-left: 25px;height: 40px;" class="col-lg-3">
                                     <a href="chat.html"><p class="text-center mt-2 bold black"><i class="m-1 fa fa-envelope"></i>Bericht</p></a>
                                 </div>
-                                <br>
+                                <br> -->
             
                                 <!-- <div style="border-radius: 30px;background-color: #23B5B5;margin-left: 25px;height: 40px;" class="col-lg-3">
                                     <a href="book-photographer-step-1.html"><p class="text-center mt-2 bold white"><i style="color: white;" class="m-1 fa fa-eur"></i>Prijsopgave</p></a>

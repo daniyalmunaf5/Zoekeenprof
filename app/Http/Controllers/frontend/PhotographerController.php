@@ -93,11 +93,11 @@ class PhotographerController extends Controller
 
         $valiedation_from_array = [
              
-            'email' => 'email',
+            'email' => 'required|email|unique:users',
             'name' => 'required',
             'father_name' => 'required',
             'password' => 'required|confirmed|min:8', 
-            'password_confirmation' => 'required|same:password|min:6',
+            'password_confirmation' => 'required|same:password|min:8',
             'phone_number' => 'required',
             'company_name' => 'required',
             'address' => 'required', 
@@ -105,7 +105,6 @@ class PhotographerController extends Controller
             'city' => 'required',
             'province' => 'required',
             'postal_code' => 'required',
-            'type_of_shoot' => 'required',
             'description' => 'required',
             'experience' => 'required'
             
