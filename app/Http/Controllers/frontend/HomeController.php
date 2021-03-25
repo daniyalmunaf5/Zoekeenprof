@@ -75,7 +75,7 @@ class HomeController extends Controller
         // dd(Auth::user()->country);   
         if($users->isEmpty())
         {
-            Session::flash('danger', "No Photographers Found In Your Country");
+            Session::flash('message', "No Photographers Found In Your Country");
             
             return view('frontend.search-photographer')->with([
                 // 'countries' => $countries,
@@ -85,7 +85,7 @@ class HomeController extends Controller
         }
         else
         {
-            Session::flash('danger', "These are the Photographers Available in Your Country");
+            Session::flash('message', "These are the Photographers Available in Your Country");
 
         return view('frontend.search-photographer')->with([
             // 'countries' => $countries,
@@ -132,7 +132,7 @@ class HomeController extends Controller
         // dd(Auth::user()->country);   
         if($users->isEmpty())
         {
-            Session::flash('danger', "No Result Found");
+            Session::flash('message', "No Result Found");
             
             return view('frontend.search-photographer')->with([
                 // 'countries' => $countries,
@@ -142,7 +142,7 @@ class HomeController extends Controller
         }
         else
         {
-            Session::flash('danger', "Search Result");
+            Session::flash('message', "Search Result");
 
         return view('frontend.search-photographer')->with([
             // 'countries' => $countries,
@@ -195,7 +195,7 @@ class HomeController extends Controller
         // dd(Auth::user()->country);   
         if($users->isEmpty())
         {
-            Session::flash('danger', "No Result Found");
+            Session::flash('message', "No Result Found");
             
             return view('frontend.search-photographer')->with([
                 // 'countries' => $countries,
@@ -205,7 +205,7 @@ class HomeController extends Controller
         }
         else
         {
-            Session::flash('danger', "Search Result");
+            Session::flash('message', "Search Result");
 
         return view('frontend.search-photographer')->with([
             // 'countries' => $countries,

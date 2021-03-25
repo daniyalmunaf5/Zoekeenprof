@@ -78,7 +78,7 @@
                                 <option value="Friesland">Friesland</option>   
                                 <option value="Gelderland">Gelderland</option>   
                                 <option value="Groningen">Groningen</option>   
-                                <option value="Groningen">Groningen</option>   
+                                <option value="Limburg">Limburg</option>
                                 <option value="Noord-Brabant">Noord-Brabant</option>   
                                 <option value="Noord-Holland">Noord-Holland</option>   
                                 <option value="Overijssel">Overijssel</option>   
@@ -92,7 +92,7 @@
                                 </span>
                             @enderror
 
-                            <input id="postal_code" placeholder="Postal Code" type="number" min="0" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $user->postal_code }}" required autocomplete="postal_code" autofocus>
+                            <input id="postal_code" placeholder="Postal Code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $user->postal_code }}" required autocomplete="postal_code" autofocus>
                             @error('postal_code')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -115,12 +115,12 @@
                                 </span>
                             @enderror
 
-                            <input id="profilepic" style="height:48px;" placeholder="profilepic" type="file" class="form-control @error('province') is-invalid @enderror" name="profilepic" value="{{ $user->profilepic }}" required>
+                            <!-- <input id="profilepic" style="height:48px;" placeholder="profilepic" type="file" class="form-control @error('profilepic') is-invalid @enderror" name="profilepic" value="$user->profilepic" required>
                             @error('profilepic')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror -->
 
                            
                             

@@ -103,7 +103,7 @@ class PhotographerController extends Controller
             'address' => 'required', 
             'city' => 'required',
             'province' => 'required',
-            'postal_code' => 'required',
+            'postal_code' => 'required|max:6|min:5',
             'description' => 'required',
             'experience' => 'required'
             
@@ -148,7 +148,7 @@ class PhotographerController extends Controller
             $photographer->roles()->attach($role);
                 
             // return $photographer;
-            Session::flash('success', "Registered Successfully");
+            Session::flash('success', "Photographer Created Successfully");
 
         return redirect()->route('custom-login');
     }

@@ -70,6 +70,8 @@ Route::namespace('App\Http\Controllers\backend')->prefix('backend')->name('backe
 Route::get('/backend{user}/profile', 'App\Http\Controllers\backend\PhotographerController@index')->name('backend.photographer.index');
 Route::get('/backend{user}/edit', 'App\Http\Controllers\backend\PhotographerController@edit')->name('backend.photographer.edit');
 Route::PUT('backend/{user}', 'App\Http\Controllers\backend\PhotographerController@update')->name('backend.photographer.update');
+Route::get('/backend{user}/editdp', 'App\Http\Controllers\backend\PhotographerController@editdp')->name('backend.photographer.editdp');
+Route::PUT('backenddp/{user}', 'App\Http\Controllers\backend\PhotographerController@updatedp')->name('backend.photographer.updatedp');
 
 
 Route::get('/phpartisanmigrate', function () {

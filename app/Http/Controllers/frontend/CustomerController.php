@@ -82,7 +82,7 @@ class CustomerController extends Controller
             'address' => 'required', 
             'city' => 'required',
             'province' => 'required',
-            'postal_code' => 'required',
+            'postal_code' => 'required|max:6|min:5',
             
             ];
 
@@ -107,7 +107,7 @@ class CustomerController extends Controller
 
         $customer->roles()->attach($role);
 
-        Session::flash('success', "Registered Successfully");
+        Session::flash('success', "User Created Successfully");
 
         return redirect()->route('custom-login');
 

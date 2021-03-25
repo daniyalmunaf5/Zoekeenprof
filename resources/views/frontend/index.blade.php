@@ -6,14 +6,15 @@
             <div class="row mt-5">
                 <div class="col-md-8 margin_top search ">
                     <h1 class="d-flex justify-content-between">Zoek naar een fotograaf in uw buurt</h1>
-                    <div class="col-lg-8 col-sm-12">
+                    <!-- <div class="col-lg-8 col-sm-12">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" style=" height: 40px;margin-top: 0px;font-family: FontAwesome; border-radius: 40px;" placeholder='&#xf041 U Can Search Here AnyThing...' aria-label="Recipient's username" aria-describedby="basic-addon2">
                             
                         </div>
-                    </div>
+                    </div> -->
+                    <br>
                     <div class="input-group-append">
-                        <a href="{{route('search-photographer')}}"><button class="btn btn-primary search_button" type="button" style="border-radius: 20px;">Search</button></a>
+                        <a href="{{route('search-photographer')}}"><button style="width:120px;" class="btn btn-primary search_button" type="button" style="border-radius: 20px;">Search</button></a>
                       </div>
                     
                 </div>

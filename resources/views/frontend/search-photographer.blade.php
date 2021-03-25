@@ -54,7 +54,7 @@
                                 <option value="Friesland">Friesland</option>   
                                 <option value="Gelderland">Gelderland</option>   
                                 <option value="Groningen">Groningen</option>   
-                                <option value="Groningen">Groningen</option>   
+                                <option value="Limburg">Limburg</option>
                                 <option value="Noord-Brabant">Noord-Brabant</option>   
                                 <option value="Noord-Holland">Noord-Holland</option>   
                                 <option value="Overijssel">Overijssel</option>   
@@ -169,8 +169,8 @@
                     <br><br>
                     
                     <!-- photographer -->
-                    @if (Session::has('danger'))
-                    <div class="alert alert-info">{{ Session::get('danger') }}</div>
+                    @if (Session::has('message'))
+                    <div class="alert alert-info">{{ Session::get('message') }}</div>
                     @endif
                     @foreach($users as $user)
                     

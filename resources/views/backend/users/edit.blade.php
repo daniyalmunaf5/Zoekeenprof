@@ -9,7 +9,7 @@
                 
                 <div class="card-body">
                    
-                    <form action="{{ route('backend.users.update', $user)}}" method="POST">
+                    <form action="{{ route('backend.photographer.update', $user)}}" method="POST">
                         @csrf
                         {{method_field('PUT')}}
 
@@ -48,7 +48,7 @@
                                 </span>
                             @enderror
 
-                            <select class="form-control text-capitalize select" name="country" required id="country">
+                            <!-- <select class="form-control text-capitalize select" name="country" required id="country">
                                 <option value="{{ $user->country }}">{{ $user->country }}</option>   
                                 @foreach ($countries as $country) 
                                 <option value="{{$country->name}}">
@@ -60,7 +60,7 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                            @enderror -->
 
                             <input id="city" placeholder="City" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user->city }}" required autocomplete="city" autofocus>
                             @error('city')
@@ -69,19 +69,34 @@
                                 </span>
                             @enderror
 
-                            <input id="province" placeholder="Province" type="text" class="form-control @error('province') is-invalid @enderror" name="province" value="{{ $user->province }}" required autocomplete="province" autofocus>
+                            <select style="height:48px;" class="form-control text-capitalize select" name="province" required id="province">
+                            <option value="{{ $user->province }}">{{ $user->province }}</option>   
+                                <option value="Drenthe">Drenthe</option>   
+                                <option value="Flevoland">Flevoland</option>   
+                                <option value="Friesland">Friesland</option>   
+                                <option value="Gelderland">Gelderland</option>   
+                                <option value="Groningen">Groningen</option>   
+                                <option value="Limburg">Limburg</option>
+                                <option value="Noord-Brabant">Noord-Brabant</option>   
+                                <option value="Noord-Holland">Noord-Holland</option>   
+                                <option value="Overijssel">Overijssel</option>   
+                                <option value="Zuid-Holland">Zuid-Holland</option>   
+                                <option value="Utrecht">Utrecht</option>   
+                                <option value="Zeeland">Zeeland</option>   
+                            </select>
                             @error('province')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
 
-                            <input id="postal_code" placeholder="Postal Code" type="number" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $user->postal_code }}" required autocomplete="postal_code" autofocus>
+                            <input id="postal_code" placeholder="Postal Code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $user->postal_code }}" required autocomplete="postal_code" autofocus>
                             @error('postal_code')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+
 
                             <input id="phone_number" placeholder="Phone Number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $user->phone_number }}" required autocomplete="phone_number" autofocus>
                             @error('phone_number')

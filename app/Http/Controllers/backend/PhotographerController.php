@@ -101,8 +101,26 @@ class PhotographerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {
-        $profilepic = app('App\Http\Controllers\frontend\UploadImageController')->storage_upload($request->profilepic,'/app/public/PhotographerRegister/');
+    {   
+        $valiedation_from_array = [
+             
+            'email' => 'required',
+            'name' => 'required',
+            'father_name' => 'required',
+            'phone_number' => 'required',
+            'company_name' => 'required',
+            'address' => 'required', 
+            'city' => 'required',
+            'province' => 'required',
+            'postal_code' => 'required|max:6|min:5',
+            'description' => 'required',
+            'experience' => 'required'
+            
+            ];
+
+            $this->validate($request, $valiedation_from_array);
+
+
 
         $user->email = request('email');
         $user->name = request('name');
@@ -114,7 +132,6 @@ class PhotographerController extends Controller
         $user->city = request('city');
         $user->province = request('province');
         $user->postal_code = request('postal_code');
-        $user->profilepic = $profilepic;
 
         $user->type_of_shoot = request('type_of_shoot');
         $user->description = request('description');
@@ -128,6 +145,43 @@ class PhotographerController extends Controller
         return redirect()->route('backend.photographer.index',Auth::user()->id)->with('user', $user);
 
     }
+
+
+
+    public function editdp(User $user)
+    {
+
+        return view('backend.photographer.editdp')->with([
+            'user' => $user
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatedp(Request $request, User $user)
+    {   
+        
+
+
+        $profilepic = app('App\Http\Controllers\frontend\UploadImageController')->storage_upload($request->profilepic,'/app/public/PhotographerRegister/');
+
+        
+        $user->profilepic = $profilepic;
+        $user->save();
+
+        if(Auth::user()->hasRole('admin')){
+        return redirect()->route('backend.users.index',Auth::user()->id)->with('user', $user);
+        }
+        return redirect()->route('backend.photographer.index',Auth::user()->id)->with('user', $user);
+
+    }
+
+
 
     /**
      * Remove the specified resource from storage.
