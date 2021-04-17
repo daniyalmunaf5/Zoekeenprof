@@ -251,6 +251,19 @@ body {
     box-sizing: border-box;
   }
 
+  input[type=date], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    height: 44px ;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    box-sizing: border-box;
+  }
+
+  
+
   .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
     width: 100% !important;
   }
@@ -658,6 +671,7 @@ body {
 
     .justify-text-at-992 {
       text-align: center !important;
+      float: none !important;
       
     }
 

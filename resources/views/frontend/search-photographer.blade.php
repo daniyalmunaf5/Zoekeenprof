@@ -180,7 +180,7 @@
                             <br><br>
                         </div>
                         <div class=" justify-items-at-768 justify-text-at-992 col-lg-8 col-md-7">
-                            <a href=""><h3 class="black">{{$user->company_name}}</h3></a>
+                            <a href="{{ route('profile',$user->id) }}"><h3 class="black">{{$user->company_name}}</h3></a>
                             <h3 class="black" style="font-size: 14px; font-weight: lighter;">{{$user->description}}</h3>
                             <div class="" style=" line-height: 32px;">
                                     <h3 class="black" style="font-size: 14px; font-weight: lighter;"><i style="color: #0103a1;" class="m-1 fa fa-map-marker"></i>{{$user->address}}, {{$user->country}}</h3>
@@ -190,9 +190,13 @@
                             </div>
 
                             <div class="row d-flex justify-content-center">
+                @can('admin-user')
+
                                 <div style="border: 1px solid;;margin-left: 25px;height: 40px;" class=" col-lg-3">
-                                    <a href=""><p class="text-center mt-2 bold black">Vraag Offerte </p></a>
+                                    <a href="{{ route('requestquoteindex',$user->id) }}"><p class="text-center mt-2 bold black">Vraag Offerte </p></a>
                                 </div>
+                                @endcan
+
                                 <!-- <br>
                                 <div style="border: 1px solid;;margin-left: 25px;height: 40px;" class="col-lg-3">
                                     <a href="chat.html"><p class="text-center mt-2 bold black"><i class="m-1 fa fa-envelope"></i>Bericht</p></a>

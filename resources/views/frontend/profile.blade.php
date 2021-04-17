@@ -26,9 +26,12 @@
                 </div>
 
                 <div class="row d-flex justify-content-center">
-                    <div style="border: 1px solid;;margin-left: 25px;" class=" col-md-3">
-                        <a href="chat.html"><p class="text-center mt-2 bold black"><i class="m-1 fa fa-envelope"></i>Vraag Offerte</p></a>
+                @can('admin-user')
+                    
+                <div style="border: 1px solid;;margin-left: 25px;" class=" col-md-3">
+                        <a href="{{ route('requestquoteindex',$user->id) }}"><p class="text-center mt-2 bold black"><i class="m-1 fa fa-envelope"></i>Vraag Offerte</p></a>
                     </div>
+                    @endcan
                     <br>
 
                     <!-- <div style="border: 1px solid;;margin-left: 25px;" class="col-md-3">

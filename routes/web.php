@@ -32,6 +32,17 @@ Route::get('/search-photographer', 'App\Http\Controllers\frontend\HomeController
 Route::post('/filter-photographer', 'App\Http\Controllers\frontend\HomeController@filterphotographer')->name('filter-photographer')->middleware('auth');
 Route::post('/filter2-photographer', 'App\Http\Controllers\frontend\HomeController@filter2photographer')->name('filter2-photographer')->middleware('auth');
 Route::get('/profile{user}/profile', 'App\Http\Controllers\frontend\HomeController@profile')->name('profile')->middleware('auth');
+Route::get('/requestquote{user}', 'App\Http\Controllers\frontend\HomeController@requestquoteindex')->name('requestquoteindex')->middleware('auth');
+Route::Post('/requestquote', 'App\Http\Controllers\frontend\HomeController@requestquotesend')->name('requestquotesend')->middleware('auth');
+Route::get('/requestlist', 'App\Http\Controllers\frontend\HomeController@requestlist')->name('requestlist')->middleware('auth');
+Route::get('/quote{quote_request}', 'App\Http\Controllers\frontend\HomeController@quoteindex')->name('quoteindex')->middleware('auth');
+Route::Post('/quote', 'App\Http\Controllers\frontend\HomeController@quotesend')->name('quotesend')->middleware('auth');
+Route::get('/quote', 'App\Http\Controllers\frontend\HomeController@quotelist')->name('quotelist')->middleware('auth');
+Route::Post('/acceptquote', 'App\Http\Controllers\frontend\HomeController@acceptquote')->name('acceptquote')->middleware('auth');
+Route::Post('/deletequote', 'App\Http\Controllers\frontend\HomeController@deletequote')->name('deletequote')->middleware('auth');
+Route::get('/acceptedquotes', 'App\Http\Controllers\frontend\HomeController@acceptedquotes')->name('acceptedquotes')->middleware('auth');
+Route::get('/acceptedquotesPhotographer', 'App\Http\Controllers\frontend\HomeController@acceptedquotesPhotographer')->name('acceptedquotesPhotographer')->middleware('auth');
+
 
 
 Route::get('/multiuploads', 'App\Http\Controllers\backend\PhotographerController@uploadForm')->name('multiuploads');

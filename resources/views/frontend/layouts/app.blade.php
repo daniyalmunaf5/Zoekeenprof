@@ -85,6 +85,16 @@ $("body").on("change","#states",function(){
                 <a href="{{ route('backend.photographer.index',Auth::user()->id)}}">My Profile</a>
                 @endcan
                 
+                @can('only-photographer')
+                <a href="{{ route('requestlist')}}">Quote Requests</a>
+                <a href="{{ route('acceptedquotesPhotographer')}}">Accepted Quotes</a>
+                @endcan
+
+                @can('only-user')
+                <a href="{{ route('quotelist')}}">Quotes</a>
+                <a href="{{ route('acceptedquotes')}}">Accepted Quotes</a>
+                @endcan
+                
                 <a href="{{ route('about-us')}}">About Us</a>
 
                 @guest
